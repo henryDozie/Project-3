@@ -37,11 +37,11 @@ wingRecruiter will be made up of the following features:
 ------------------------------------------
 ## Wireframes
 
-Use the Wireframes section to display desktop, tablet and mobile views.
+https://imgur.com/zY4VCI0.png
+https://imgur.com/rsdH7kF.png
+https://imgur.com/lCFNLmc.png
+https://imgur.com/tzaTfPE.png
 
-Desktop Landing
-Desktop Hero
-Mobile Data Index
 --------------------------------------------
 ## Goals
 
