@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import Footer from './components/footer';
-import { loginUser, registerUser, verifyUser, restrict } from './services/api_helper';
+import { loginUser, registerUser, verifyUser} from './services/api_helper';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
 import CreateJob from './components/createJob';
@@ -69,6 +69,7 @@ class App extends Component {
     render(){
       return (
         <div className="App">
+          <CreateJob />
       <Footer/>
         </div>
       )
