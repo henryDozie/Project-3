@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import axios from 'axios';
 import './App.css';
 import Footer from './components/footer';
+
 import { loginUser, registerUser, verifyUser} from './services/api_helper';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
@@ -36,7 +36,7 @@ class App extends Component {
     e.preventDefault();
     if (!registerData.username || !registerData.password) {
       this.setState({
-        errorText: "You must supply a username And password ya jerk!"
+        errorText: "You must supply a username And password"
       })
     } else {
       const currentUser = await registerUser(registerData);
@@ -55,7 +55,7 @@ class App extends Component {
       })
     }
   }
-  
+
   handleLogout = () => {
     this.setState({
       currentUser: null
@@ -69,11 +69,35 @@ class App extends Component {
     render(){
       return (
         <div className="App">
+
+        <Header />
+        <nav>
+          {this.state.currentUser ?
+            <div>
+              <p>Hello, {this.state.currentUser.username}</p>
+              <button onClick={this.handleLogout}>Logout</button>
+            </div>
+            :
+            <Link to="/login">Login  /  Register </Link>
+          }
+        </nav>
+        {this.state.errorText && <p className="error">{this.state.errorText}</p>}
+        <Route path="/login" render={() => (
+          <LoginForm handleLogin={this.handleLogin} />
+        )} />
+        {/* <Route path="/register" render={() => (
+          <RegisterForm handleRegister={this.handleRegister} />
+        )} /> */}
+        <CreateJob />
+        <Footer />
+      </div>
+
           <CreateJob />
       <Footer/>
         </div>
-      )
-    }
-  }
 
-  export default App;
+      )
+  }
+}
+
+export default App;
