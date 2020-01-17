@@ -74,6 +74,7 @@ class App extends Component {
           {this.state.currentUser ? (
             <div>
               <p>Hello, {this.state.currentUser.username}</p>
+              <CreateJob />
               <button onClick={this.handleLogout}>Logout</button>
             </div>
           ) : (
@@ -91,7 +92,6 @@ class App extends Component {
           path="/register"
           render={() => <RegisterForm handleRegister={this.handleRegister} />}
         />
-        <CreateJob />
         <Jobs />
         <Footer />
       </div>
