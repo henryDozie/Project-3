@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
 import Footer from './components/footer';
-import Header from './components/header';
+
 import { loginUser, registerUser, verifyUser} from './services/api_helper';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
@@ -69,6 +69,7 @@ class App extends Component {
     render(){
       return (
         <div className="App">
+
         <Header />
         <nav>
           {this.state.currentUser ?
@@ -90,6 +91,11 @@ class App extends Component {
         <CreateJob />
         <Footer />
       </div>
+
+          <CreateJob />
+      <Footer/>
+        </div>
+
       )
   }
 }
