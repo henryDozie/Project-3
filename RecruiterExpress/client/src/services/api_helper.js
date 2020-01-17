@@ -1,4 +1,5 @@
 import axios from 'axios';
+import React from 'react'
 
 const api = axios.create({
     baseURL: "http://localhost:3001"
@@ -17,17 +18,6 @@ export const registerUser = async (registerData) => {
     api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`;
     
     return resp.data.user;
-}
-export const restrict = (req, res, next) =>{
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        const data = jwt.verify(token, TOKEN_KEY);
-        res.locals.user = data;
-        next();
-    } catch(e) {
-        console.error(e);
-        res.status(403).send('Unauthorized');
-    }
 }
 export const verifyUser = async () => {
     const token = localStorage.getItem('authToken');
