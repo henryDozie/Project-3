@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import './App.css';
 import Footer from './components/footer';
 import Header from './components/header';
-import { loginUser, registerUser, verifyUser } from './services/api_helper';
+import { loginUser, registerUser, verifyUser} from './services/api_helper';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
 import CreateJob from './components/createJob';
@@ -66,9 +66,9 @@ class App extends Component {
     this.handleVerify();
   }
 
-  render() {
-    return (
-      <div className="App">
+    render(){
+      return (
+        <div className="App">
         <Header />
         <nav>
           {this.state.currentUser ?
@@ -87,9 +87,10 @@ class App extends Component {
         {/* <Route path="/register" render={() => (
           <RegisterForm handleRegister={this.handleRegister} />
         )} /> */}
+        <CreateJob />
         <Footer />
       </div>
-    )
+      )
   }
 }
 
