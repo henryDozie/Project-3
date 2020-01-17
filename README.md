@@ -80,13 +80,13 @@ src
       |__ images
       |__ mockups
 |__ components/
-      |__ Header.jsx
-      |__ Home.jsx
-      |__ LoginForm.jsx
-      |__ RegisterFormjsx
-      |__ CreateFormjsx
-      |__ JobApplications.jsx
-      |__ Footer
+      |__ header.jsx
+      |__ home.jsx
+      |__ loginForm.jsx
+      |__ registerFormjsx
+      |__ createJob.jsx
+      |__ jobs.js.jsx
+      |__ footer
 |__ services/
       |__ api_helper.jsx
 
