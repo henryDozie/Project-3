@@ -92,6 +92,7 @@ class App extends Component {
           render={() => <RegisterForm handleRegister={this.handleRegister} />}
         />
         <CreateJob />
+        <Jobs />
         <Footer />
       </div>
     );
