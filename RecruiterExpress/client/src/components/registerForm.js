@@ -15,7 +15,10 @@ export default class RegisterForm extends Component {
     this.setState({
       [name]: value
     })
+
+    console.log(this.state)
   }
+
 
 
 

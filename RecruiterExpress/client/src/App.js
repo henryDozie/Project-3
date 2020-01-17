@@ -8,12 +8,14 @@ import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
 import CreateJob from './components/createJob';
 import Jobs from './components/jobs';
+import Home from './components/home';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: null,
+
       errorText: ""
     }
   }
@@ -55,7 +57,7 @@ class App extends Component {
       })
     }
   }
-  
+
   handleLogout = () => {
     this.setState({
       currentUser: null
@@ -66,13 +68,17 @@ class App extends Component {
     this.handleVerify();
   }
 
-    render(){
-      return (
-        <div className="App">
-      <Footer/>
-        </div>
-      )
-    }
+  render() {
+    return (
+      <div className="App">
+        <Home />
+        <Footer />
+        <Jobs />
+        <RegisterForm />
+        <CreateJob />
+      </div>
+    )
   }
+}
 
-  export default App;
+export default App;

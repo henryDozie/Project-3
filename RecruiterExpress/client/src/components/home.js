@@ -5,26 +5,39 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      jobs: [],
+      jobTitle: ''
+    }
   }
+
+
+
+  submitJob = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
+    console.log("HELLOOOO")
+    console.log(this.state.jobTitle)
+  }
+
+
 
   render() {
     return (
 
       <div className="homepage">
-        <form>
-          <input
-            type='text'
-            name='username'
-            placeholder='Job Title'
-            value=''
-            onChange='' />
-          <input
-            type='text'
-            name='username'
-            placeholder='City'
-            value=''
-            onChange='' />
-          <input type='submit' placeholder='Search Job' />
+        <form onSubmit={(e) => {
+          this.submitJob(e, { jobTitle: this.state.jobTitle })
+        }}>
+          <input type="textarea"
+            name="text"
+            value={this.state.text}
+            onChange={this.handleChange}
+            placeholder="Job Title"
+          />
+          <input type="submit" />
         </form>
       </div>
 

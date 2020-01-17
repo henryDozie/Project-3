@@ -31,7 +31,6 @@ export default class Jobs extends Component {
         {this.state.jobs.map(jobs => (
           <div>
             <h3>{jobs.jobTitle}</h3>
-            <h4>{jobs.jobId}</h4>
             <p>{jobs.jobDescription}</p>
             <p>{jobs.jobRequirements}</p>
           </div>
