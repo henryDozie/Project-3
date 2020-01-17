@@ -1,16 +1,4 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-export default function Jobs(props) {
-  return (
-    <div>
-      {props.namethis.map(name => (
-        <div>{name}</div>
-      ))}
-    </div>
-  )
-=======
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -22,8 +10,6 @@ export default class Jobs extends Component {
       jobs: []
     }
   }
-
-
   async componentDidMount() {
     try {
       const response = await axios.get('http://localhost:3001/jobs');
@@ -46,6 +32,7 @@ export default class Jobs extends Component {
             <h3>{jobs.jobTitle}</h3>
             <h4>{jobs.jobId}</h4>
             <p>{jobs.jobDescription}</p>
+            <p>{jobs.salary}</p>
             <p>{jobs.jobRequirements}</p>
           </div>
         ))}
