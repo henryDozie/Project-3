@@ -1,155 +1,71 @@
-## Project Title:
-*WingRecruiter
+# Titile: ---MGI--- `MyGameInfo` 
+MGI (MyGameInfo) is an interactive application for game lovers and enthusiasts out there. This application will be heavily reliant on gamers being graphically motivated and constantly informed on the events happening in the gaming community. Data ranging from release dates, production manufacturers, skins and a lot more will be accessible on this application.
+The main target group for this application will be virtually everyone interested in making background reserach about games before they invest in them.
 
------------------------------------------
-TZAR -----Henry
------------------------------------------
-## Project Planning
+# API
 
-- In This project, we will implement a backEnd-server using Express and data will be stored in the database (wingRecruiter_db) 
+![wireframe0](https://imgur.com/Um3EdIe.jpg)
 
-- Also, the frontend will be managed using a react framework for servicing the client/users
+The API employed in the project is acquired from:
+`RAWG Video Games Database API`
+RAWG is the largest video game database and game discovery service. And they are gladly sharing our 350,000+ games, search, and machine learning recommendations with the world.
 
+# Features
+This application will have a richly styled outlook in CSS which will help ensure user experience is enhanced. Several methods such as the responses to the following queries will be incoported:
+`
+- What console games were released last month?
+- What are the most anticipated upcoming games?
+- What games were published by Annapurna Interactive in the 2019?
+- What are the most popular games in 2019?
+- What is the highest rated game by Electronic Arts?
 
------------------------------------------
-## MVP
-Our application is a client based system that aims to address the visibility of jobs and opportunities within the job martket. We aim to use this web service to bridge the gap between employers and potential employees.
-To extend the spectrum of usability, our application will provide job visibility to all users (registered or not) and allow registered users (employers/recruiters) to post their job opportunities with variable descriptions and requirements. Furhtermore, recruiters have the ability to do the following:
- - Create/Post Job opening
- - Update existing positions
- - Delete job positions after they have been taken
+The main section will contain about 6 div elements that function display units. this display will be in a square box making it better responsive on varying screen dimensions. These will be function/class based components including;
 
-Also, alll users/visitors will have ability to retrieve information regarding the jobs based on title and location. They will also have access to;
-- Recruiter ratings
-- Recruiter reviews
+- Header
+- Footer
+- Categories
+- Forms `For collecting serch query`
+- Users `A locally stored list of users`
+- Comments `(Users can leave comments on there favourite/worst games)`
 
+## API Call
+This API has been tested and returned data is the following format;
+GameList:
+` https://rawg-video-games-database.p.rapidapi.com/games
+`
 
-------------------------------------------
+![wireframe1](https://imgur.com/ww0240D.jpg)
 
-## Features
+Porpular games in a Year:
+`https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added
+`
 
-wingRecruiter will be made up of the following features:
-- Create
-- Update
-- Delete
-- Verify
-- Restrict
-------------------------------------------
-## Wireframes
+![wireframe2](https://imgur.com/H9Vd0Er.jpg)
+etc.
 
-https://imgur.com/zY4VCI0.png
-https://imgur.com/rsdH7kF.png
-https://imgur.com/lCFNLmc.png
-https://imgur.com/tzaTfPE.png
+# MVP
+- Get data from the API calls
+- Render the data on screen in an interactive format
+- Grant users access to highlight clips on hover
 
---------------------------------------------
-## Goals
+## Wireframe
+##### home
+![wireframe3](https://imgur.com/en9Rlea.jpg)
 
-Principally, we aim to build a fullstack application that is reliable in terms of security amd simulteneously flexible for any user to navigate and retirieve required information.
-Furthermore, our goal is to galvanize user experience with data privacy.
+##### CategoriesPage
 
-## Libraries
+![wireframe4](https://imgur.com/WZXT0DT.jpg)
 
-#### auth.js
-- This is used for the user authorization (generating the web token)
+# Technology used
+- React
+- React-Router
+- Axios
+- Font Awesome
+- Google Fonts
+- RAWG API
+- Weather Api (optional addon)
 
-#### models.js
-- Create the the variable that is a connection to the database
-- Creates the table colunm as relations.
-
-#### Routes 
-- for handling different functions such as the post, get, etc. from the sql database
- #### Axios
- - For sending requests from the front end to the backend
-
- #### React-Router-Dom
-- For creating routes ansd links to enhance navigation and user experience
-
-#### Body-parser
-- This parser accepts any Unicode encoding of the body and supports automatic inflation of gzip and deflate encodings. It essentially returns a middleware that only passes JSON
-
-------------------------------------------------------
-## Component Hierarchy
-
-Use this section to define your React components and the data architecture of your app.
-src
-|__ assets/
-      |__ data-tests
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
-|__ components/
-      |__ header.jsx
-      |__ home.jsx
-      |__ loginForm.jsx
-      |__ registerFormjsx
-      |__ createJob.jsx
-      |__ jobs.js.jsx
-      |__ footer
-|__ services/
-      |__ api_helper.jsx
-
-React_app
-|__ client(react app)/
-      |__App.jsx
-      |__ App.css
-
-
-Component	Type	state	props	Description
-Header	functional	n	n	The header will contain the navigation and logo.
-Navigation	functional	n	n	The navigation will provide a link to each of the pages.
-Gallery	class	y	n	The gallery will render the job search page using in flexbox.
-Gallery Card	functional	n	y	The cards will render the job application info via props.
-Footer	functional	n	n	The footer will show info about me and a link to my portfolio.
-Component Estimates
-
-
-Add Contact Form	L	3 hrs	2 hrs	3 hrs
-Create CRUD Actions	H	3 hrs	1 hrs	TBD
-TOTAL		6 hrs	3 hrs	TBD
-     
-
----------------------------------
-
-## Back End
-
-1.models.js----create three tables(user, jobs, locations )
-2.resetDb.js
-3.seed.js
-4.server.js
-5.routes
-5.1.UserRouter
-5.2.PostRouter
-6.services
-6.1.auth.js
-
-----------------------------------------------------------------
-## Database
-
-Name: wingRecuiter_db
-1.user----(username, password)
-2.jobs----(jobTitle, jobId, jobRequirements, locations, salary)
-3.recruiter---(rating, reviews, jobCount, imge_url)
-
------------------------------------------------------------------
-## Styling:
-Use flexbox (display: flex)
-
-------------------------------------------------------------------
-## team expectations document:
-
-- TimeLine       ======> 5-6 days
-- Teammates      ======> Omnia, Henry, Jpseph
-- Team Values    ======> Teamwork is very essential in almost every application build.
-- Team Practices ======> have an equal overview, build the contents of the project and design to build out the web application.
-
-
-
-
-----------------------------------------------------------------------------------------------------------------
-
-
-
-
-
+## Future features
+- User authenticated accounts.
+- Location based game festival suggestions.
+- Gaming platform central authurisation systems for account management. 
