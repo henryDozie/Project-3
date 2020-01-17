@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import {Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
+import { loginUser, registerUser, verifyUser, restrict } from './services/api_helper';
+import LoginForm from './components/loginForm';
+import RegisterForm from './components/registerForm';
+import CreateJob from './components/createJob';
+import Jobs from './components/jobs';
 
-function App() {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: null,
+      errorText: ""
+    }
+  }
+
+render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
     </div>
   );
 }
-
+}
 export default App;
