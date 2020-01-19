@@ -20,6 +20,7 @@ class LoginForm extends Component {
 
     render() {
         return (
+            <div>
             <form
                 className="login"
                 onSubmit={e =>
@@ -49,6 +50,8 @@ class LoginForm extends Component {
                 <input className="submit" type="submit" value="Login" />
                 {/* <Link to="/register">Register</Link> */}
             </form>
+             <Link to="/register">Register</Link> 
+                </div>
         );
     }
 }
