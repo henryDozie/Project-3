@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
+import Home from "./components/home";
 import { loginUser, registerUser, verifyUser } from "./services/api_helper";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
@@ -22,6 +23,7 @@ class App extends Component {
     if (!loginData.username || !loginData.password) {
       this.setState({
         errorText: "You must supply a username And password"
+
       });
     } else {
       e.preventDefault();
@@ -66,21 +68,12 @@ class App extends Component {
     this.handleVerify();
   }
 
+
   render() {
     return (
       <div className="App">
         <Header />
-        <nav>
-          {this.state.currentUser ? (
-            <div>
-              <p>Hello, {this.state.currentUser.username}</p>
-              <CreateJob />
-              <button onClick={this.handleLogout}>Logout</button>
-            </div>
-          ) : (
-            <Link to="/login">Login / Register </Link>
-          )}
-        </nav>
+        <CreateJob />
         {this.state.errorText && (
           <p className="error">{this.state.errorText}</p>
         )}
@@ -92,11 +85,19 @@ class App extends Component {
           path="/register"
           render={() => <RegisterForm handleRegister={this.handleRegister} />}
         />
+          <Route
+          path="/home"
+          render={() => <Home/>}
+        />
+          <Route
+          path="/jobs"
+          render={() => <Jobs/>}
+        />
+        <Home/>
         <Jobs />
         <Footer />
       </div>
     );
   }
 }
-
 export default App;

@@ -2,14 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/jobs">Jobs</Link>
-      <Link to="/login">Login / Register</Link>
-      <button onClick={props.handleLogout}>Logout</button>
-    </nav>
-  );
+    return (
+        <div>
+        <img className="headerStyle" src="https://i.imgur.com/8o0vbRm.jpg"></img>
+        <nav>
+            {/* {props.currentUser ? (
+  <div>
+    <p>Hello, {props.currentUser.username}</p> */}
+            <Link to="/login">Login/ </Link>
+            <Link to="/Register">Register/ </Link>
+
+            <Link to="/">Home/ </Link>
+            <Link to="/Jobs">Jobs</Link>
+            <button onClick={props.handleLogout}>Logout</button>
+        </nav>
+        </div>
+    );
 };
 
 export default Header;
+
