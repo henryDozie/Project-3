@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
@@ -74,6 +74,17 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <nav>
+           {this.state.currentUser ? (
+             <div>
+               <p>Hello, {this.state.currentUser.username}</p>
+               <CreateJob />
+               <button onClick={this.handleLogout}>Logout</button>
+             </div>
+           ) : (
+             <Link to="/login">Login / Register </Link>
+           )}
+         </nav>
         {this.state.errorText && (
           <p className="error">{this.state.errorText}</p>
         )}
