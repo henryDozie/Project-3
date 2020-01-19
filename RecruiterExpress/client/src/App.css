@@ -71,3 +71,13 @@
   width: 25vw;
   margin: 10vh auto;
 }
+
+  .headerStyle {
+    display: flex;
+    justify-content: center;
+    width:300px;
+    height:200px;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
