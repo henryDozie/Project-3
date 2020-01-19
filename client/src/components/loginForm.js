@@ -47,7 +47,7 @@ class LoginForm extends Component {
                     required
                 />
                 <input className="submit" type="submit" value="Login" />
-                <Link to="/register">Register</Link>
+                {/* <Link to="/register">Register</Link> */}
             </form>
         );
     }
