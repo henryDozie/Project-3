@@ -15,7 +15,6 @@ class RegisterForm extends Component {
       [name]: value
     });
   };
-
   render() {
     return (
       <form
