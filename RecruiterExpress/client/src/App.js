@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Home from "./components/home";
+import About from "./components/about";
 import { loginUser, registerUser, verifyUser } from "./services/api_helper";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
@@ -73,31 +74,36 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <CreateJob />
         {this.state.errorText && (
           <p className="error">{this.state.errorText}</p>
         )}
-        <Route
-          path="/login"
-          render={() => <LoginForm handleLogin={this.handleLogin} />}
-        />
-        <Route
-          path="/register"
-          render={() => <RegisterForm handleRegister={this.handleRegister} />}
-        />
-          <Route
-          path="/home"
-          render={() => <Home/>}
-        />
-          <Route
-          path="/jobs"
-          render={() => <Jobs/>}
-        />
-        <Home/>
-        <Jobs />
+        <main>
+          <Switch>
+            <Route path="/about" render={() => <About/>}
+            />
+            <Route
+              path="/login"
+              render={() => <LoginForm handleLogin={this.handleLogin} />}
+            />
+            <Route
+              path="/register"
+              render={() => <RegisterForm handleRegister={this.handleRegister} />}
+            />
+            <Route
+              path="/"
+              render={() => <Home />}
+            />
+            <Route
+              path="/jobs"
+              render={() => <Jobs />}
+            />
+          </Switch>
+        </main>
         <Footer />
       </div>
     );
   }
 }
 export default App;
+
+

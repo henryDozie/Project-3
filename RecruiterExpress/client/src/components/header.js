@@ -11,9 +11,9 @@ const Header = (props) => {
     <p>Hello, {props.currentUser.username}</p> */}
             <Link to="/login">Login/ </Link>
             <Link to="/Register">Register/ </Link>
-
             <Link to="/">Home/ </Link>
-            <Link to="/Jobs">Jobs</Link>
+            <Link to="/Jobs">Jobs/ </Link>
+            <Link to="/CreateJob">Create Job</Link>
             <button onClick={props.handleLogout}>Logout</button>
         </nav>
         </div>
