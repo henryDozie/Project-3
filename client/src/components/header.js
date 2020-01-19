@@ -8,7 +8,7 @@ const Header = (props) => {
         <nav>
             <Link to="/">Home/ </Link>
             <Link to="/Jobs">Jobs/ </Link>
-            <button onClick={props.handleLogout}>Logout</button>
+            {/* <button onClick={props.handleLogout}>Logout</button> */}
         </nav>
         </div>
     );
