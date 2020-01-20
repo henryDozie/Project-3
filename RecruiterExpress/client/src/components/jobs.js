@@ -6,9 +6,7 @@ export default class Jobs extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      jobs: []
-    }
+
   }
   // async componentDidMount() {
   //   try {
