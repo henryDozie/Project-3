@@ -1,6 +1,7 @@
-
 import React, { Component } from 'react';
 import axios from 'axios';
+
+
 
 export default class Jobs extends Component {
   constructor(props) {
@@ -13,15 +14,20 @@ export default class Jobs extends Component {
   render() {
     return (
       <div>
-        {this.props.jobs.map(job => (
-          <div>
-            <h3>{job.jobTitle}</h3>
-            <p>{job.jobDescription}</p>
-            <p>{job.salary}</p>
-            <p>{job.jobRequirements}</p>
-            <h1>{job.salary}</h1>
-          </div>
-        ))}
+        {this.props.jobs ?
+
+          (this.props.jobs.map(job => (
+            <div>
+              {console.log('pos')}
+              <h3>{job.jobTitle}</h3>
+              <p>{job.jobDescription}</p>
+              <p>{job.location}</p>
+              <p>{job.jobRequirements}</p>
+              <h1>{job.salary}</h1>
+            </div>
+          ))) :
+          (<div>{console.log('neg')}</div>)
+        }
       </div>
     )
   }

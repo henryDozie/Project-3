@@ -9,34 +9,40 @@ class Home extends Component {
     this.state = {
       jobs: [],
       text: '',
-      jobTitle: '',
+      formData: {
+        jobTitle: null,
+        location: null
+      },
       isClicked: false
     }
   }
 
 
-
   submitJob = async e => {
     e.preventDefault();
-
+    const formData = this.state.formData;
     try {
-      const response = await axios.get(`http://localhost:3001/jobs/job-titles/${this.state.text}`);
+      console.log(formData.location)
+      const response = await axios.get(`http://localhost:3001/jobs/job-titles/${formData.jobTitle}/${formData.location}`);
       this.setState({
         jobs: response.data,
         isClicked: true
       })
+      console.log(this.state.jobs.length);
     } catch (e) {
       console.error(e);
     }
 
   }
-
-  handleChange = (e) => {
-    console.log(e.target.value);
-    this.setState({
-      text: e.target.value
-    })
-
+  handleChange = (event) => {
+    let value = event.target.value
+    let name = event.target.name
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value
+      }
+    }))
   }
 
 
@@ -51,22 +57,20 @@ class Home extends Component {
             jobs={this.state.jobs} /> :
 
           <form onSubmit={this.submitJob}>
-            <input type="textarea"
-              name="text"
-              value={this.state.text}
-              onChange={this.handleChange}
-              placeholder="Job Title"
-            />
             <select onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
               <option disabled>Job Title</option>
-              <option>Software Engineer</option>
-              <option>Computer Science</option>
-              <option>Architecture</option>
+              {this.props.jobTitle.map(job => (
+                <><option>{job}</option></>))}
+            </select>
+
+            <select onChange={this.handleChange} name="location" type="text" placeholder="location" defaultValue="City">
+              <option disabled>City</option>
+              {this.props.location.map(city => (
+                <><option>{city}</option></>))}
             </select>
             <input type="submit" />
           </form>}
-
-      </div>
+      </div >
 
     )
   }
