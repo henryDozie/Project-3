@@ -5,9 +5,8 @@ const Header = (props) => {
   return (
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/jobs">Jobs</Link>
-      <Link to="/login">Login / Register</Link>
-      <button onClick={props.handleLogout}>Logout</button>
+      <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
     </nav>
   );
 };

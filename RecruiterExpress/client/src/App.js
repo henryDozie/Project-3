@@ -15,8 +15,9 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
-
-      errorText: ""
+      errorText: "",
+      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture'],
+      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando'],
     };
   }
   handleLogin = async (e, loginData) => {
@@ -76,25 +77,17 @@ class App extends Component {
           {this.state.currentUser ? (
             <div>
               <p>Hello, {this.state.currentUser.username}</p>
-              <CreateJob />
+              <CreateJob
+                jobTitle={this.state.jobTitle}
+                location={this.state.location}
+              />
               <button onClick={this.handleLogout}>Logout</button>
             </div>
-          ) : (
-              <Link to="/login">Login / Register </Link>
-            )}
+          ) : (<Home jobTitle={this.state.jobTitle} location={this.state.location} />)}
         </nav>
-        {this.state.errorText && (
-          <p className="error">{this.state.errorText}</p>
-        )}
-        <Route
-          path="/login"
-          render={() => <LoginForm handleLogin={this.handleLogin} />}
-        />
-        <Route
-          path="/register"
-          render={() => <RegisterForm handleRegister={this.handleRegister} />}
-        />
-        <Home />
+        {this.state.errorText && (<p className="error">{this.state.errorText}</p>)}
+        <Route path="/login" render={() => <LoginForm />} />
+        <Route path="/register" render={() => <RegisterForm />} />
         <Footer />
       </div>
     );
