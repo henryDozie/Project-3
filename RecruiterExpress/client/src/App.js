@@ -78,7 +78,7 @@ class App extends Component {
           {this.state.currentUser ? (
             <div>
               <p>Hello, {this.state.currentUser.username}</p>
-              <CreateJob
+              <Profile
                 jobTitle={this.state.jobTitle}
                 location={this.state.location}
               />

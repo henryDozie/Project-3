@@ -14,6 +14,7 @@ export default class Jobs extends Component {
   render() {
     return (
       <div>
+        {console.log("what is cooking?")}
         {this.props.jobs ?
 
           (this.props.jobs.map(job => (

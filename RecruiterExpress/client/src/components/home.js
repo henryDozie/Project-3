@@ -28,7 +28,7 @@ class Home extends Component {
         jobs: response.data,
         isClicked: true
       })
-      console.log(this.state.jobs.length);
+      console.log(this.state.jobs);
     } catch (e) {
       console.error(e);
     }
