@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// import App from '../App'
 // import axios from "axios";
 
 class LoginForm extends Component {
@@ -20,6 +21,8 @@ class LoginForm extends Component {
 
   render() {
     return (
+      <div>
+        {/* <h4>Login</h4> */}
       <form
         className="login"
         onSubmit={e =>
@@ -29,7 +32,7 @@ class LoginForm extends Component {
           })
         }
       >
-        <h2>Login</h2>
+        
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -47,8 +50,11 @@ class LoginForm extends Component {
           required
         />
         <input className="submit" type="submit" value="Login" />
+        <button onClick={e => this.props.handleRegister(e)}>Register</button>
+        
         <Link to="/register">Register</Link>
-      </form>
+        </form>
+        </div>
     );
   }
 }
