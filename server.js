@@ -15,8 +15,10 @@ app.use(bodyParser.json());
 
 // routes
 
-app.use('/jobs', jobRouter);
 app.use('/recruiters', recruiterRouter);
+// app.use('/recruiters', recruiterRouter);
+// app.use('/recruiters/:recruiterId/jobs', jobRouter);
+app.use('/jobs', jobRouter);
 app.use('/auth', userRouter);
 
 // error handler
