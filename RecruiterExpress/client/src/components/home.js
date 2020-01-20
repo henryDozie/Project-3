@@ -25,7 +25,6 @@ class Home extends Component {
         jobs: response.data,
         isClicked: true
       })
-      console.log(response)
     } catch (e) {
       console.error(e);
     }
