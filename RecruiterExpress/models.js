@@ -57,7 +57,7 @@ User.init(
 );
 
 User.hasMany(Jobs, { onDelete: "cascade" });
-Jobs.belongsTo(User);
+Jobs.belongsTo(Recruiter);
 Recruiter.hasMany(Jobs, { onDelete: "cascade" });
 
 module.exports = {
