@@ -37,6 +37,7 @@ class App extends Component {
   };
   handleRegister = async (e, registerData) => {
     e.preventDefault();
+    console.log(registerData)
     if (!registerData.username || !registerData.password) {
       this.setState({
         errorText: "You must supply a username And password"
@@ -83,11 +84,12 @@ class App extends Component {
               />
               <button onClick={this.handleLogout}>Logout</button>
             </div>
-          ) : (<Home jobTitle={this.state.jobTitle} location={this.state.location} />)}
+          ) : (<div>HELLO</div>)}
         </nav>
         {this.state.errorText && (<p className="error">{this.state.errorText}</p>)}
-        <Route path="/login" render={() => <LoginForm />} />
-        <Route path="/register" render={() => <RegisterForm />} />
+        <Route path="/login" render={() => <LoginForm handleLogin={this.handleLogin} />} />
+        <Route path="/register" render={() => <RegisterForm handleRegister={this.handleRegister} />} />
+        <Route path="/home" render={() => <Home jobTitle={this.state.jobTitle} location={this.state.location} />} />
         <Footer />
       </div>
     );
