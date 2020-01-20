@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
@@ -8,6 +8,8 @@ import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import CreateJob from "./components/createJob";
 import Jobs from "./components/jobs";
+import Recruiters from "./components/recruiters";
+import Home from "./components/home";
 
 class App extends Component {
   constructor(props) {
@@ -67,32 +69,34 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.currentUser);
     return (
       <div className="App">
-        <Header />
-        <nav>
-          {this.state.currentUser ? (
-            <div>
-              <p>Hello, {this.state.currentUser.username}</p>
-              <CreateJob />
-              <button onClick={this.handleLogout}>Logout</button>
-            </div>
-          ) : (
-            <Link to="/login">Login / Register </Link>
-          )}
-        </nav>
+        <Header
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+          handleLogin={this.handleLogin}
+        />
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+    
         {this.state.errorText && (
-          <p className="error">{this.state.errorText}</p>
+          <h2 className="error">{this.state.errorText}</h2>
         )}
-        <Route
+        {/* <Route
           path="/login"
           render={() => <LoginForm handleLogin={this.handleLogin} />}
-        />
+        /> */}
         <Route
           path="/register"
           render={() => <RegisterForm handleRegister={this.handleRegister} />}
         />
-        <Jobs />
+        <Route path="/recruiters" render={() => <Recruiters />} />
+        <Route path="/createJob" render={() => <CreateJob currentUser={this.state.currentUser}/>}  />
+        <Route path="/jobs" render={() => <Jobs />} />
+        <Route path="/home" render={() => <Home />} />
+        {/* <Route path="/" render={() => <Home />} /> */}
         <Footer />
       </div>
     );
