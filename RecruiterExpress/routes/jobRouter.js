@@ -50,4 +50,14 @@ jobRouter
     }
   });
 
+jobRouter.route('/job-titles/:jobTitle').get(async (req, res) => {
+  console.log(req.params.jobTitle);
+  const job = await Jobs.findAll({
+    where: { jobTitle: req.params.jobTitle }
+  })
+  console.log(job)
+  res.json(job);
+
+})
+
 module.exports = jobRouter;

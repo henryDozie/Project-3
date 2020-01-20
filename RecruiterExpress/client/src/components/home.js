@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import Jobs from "./jobs";
 
 class Home extends Component {
   constructor(props) {
@@ -7,19 +8,36 @@ class Home extends Component {
 
     this.state = {
       jobs: [],
-      jobTitle: ''
+      text: '',
+      jobTitle: '',
+      isClicked: false
     }
   }
 
 
 
-  submitJob = (e) => {
-    const { name, value } = e.target;
+  submitJob = async e => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.get(`http://localhost:3001/jobs/job-titles/${this.state.text}`);
+      this.setState({
+        jobs: response.data,
+        isClicked: true
+      })
+      console.log(response)
+    } catch (e) {
+      console.error(e);
+    }
+
+  }
+
+  handleChange = (e) => {
+    console.log(e.target.value);
     this.setState({
-      [name]: value
+      text: e.target.value
     })
-    console.log("HELLOOOO")
-    console.log(this.state.jobTitle)
+
   }
 
 
@@ -28,17 +46,27 @@ class Home extends Component {
     return (
 
       <div className="homepage">
-        <form onSubmit={(e) => {
-          this.submitJob(e, { jobTitle: this.state.jobTitle })
-        }}>
-          <input type="textarea"
-            name="text"
-            value={this.state.text}
-            onChange={this.handleChange}
-            placeholder="Job Title"
-          />
-          <input type="submit" />
-        </form>
+
+        {this.state.isClicked ?
+          <Jobs
+            jobs={this.state.jobs} /> :
+
+          <form onSubmit={this.submitJob}>
+            <input type="textarea"
+              name="text"
+              value={this.state.text}
+              onChange={this.handleChange}
+              placeholder="Job Title"
+            />
+            <select onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
+              <option disabled>Job Title</option>
+              <option>Software Engineer</option>
+              <option>Computer Science</option>
+              <option>Architecture</option>
+            </select>
+            <input type="submit" />
+          </form>}
+
       </div>
 
     )
