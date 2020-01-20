@@ -53,6 +53,10 @@ const seed = async () => {
     recruiter_image: "http://google.com"
   });
 
+  await recruiter1.addJobs(job1);
+  await recruiter2.addJobs(job2);
+  await recruiter1.addJobs(job3);
+
   await admin.addJobs([job1, job2, job3])
   await admin.addRecruiter([recruiter1, recruiter2])
 
