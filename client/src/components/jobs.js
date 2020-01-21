@@ -33,6 +33,7 @@ export default class Jobs extends Component {
               <p>{jobs.jobDescription}</p>
               <p>{jobs.salary}</p>
               <p>{jobs.jobRequirements}</p>
+              <p>{jobs.location}</p>
             </div>
           ))}
         </div>
