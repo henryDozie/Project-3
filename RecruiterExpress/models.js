@@ -1,14 +1,25 @@
 // inside models.js
 const { Sequelize } = require("sequelize");
+let sequelize;
 
-// Create a variable that is a connection to the database.
-const sequelize = new Sequelize({
-  database: "wingRecruiter_db",
-  dialect: "postgres",
-  define: {
-    underscored: true
-  }
-});
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    define: {
+      underscored: true
+    }
+  })
+} else {
+
+  // Create a variable that is a connection to the database.
+  sequelize = new Sequelize({
+    database: "wingRecruiter_db",
+    dialect: "postgres",
+    define: {
+      underscored: true
+    }
+  });
+}
 
 class Jobs extends Sequelize.Model {}
 

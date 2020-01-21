@@ -7,7 +7,16 @@ class Home extends Component {
 
     this.state = {
       jobs: [],
-      apiLoaded: false
+      flag: false,
+      searchedJobs: [],
+      apiLoaded: false,
+      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture', 'DJ'],
+      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando', 'LA', 'Texas'],
+      formData: {
+        jobTitle: null,
+        location: null
+      },
+      isClicked: false
     };
   }
 
@@ -16,7 +25,7 @@ class Home extends Component {
     let jobList = response.data;
     let latestJobs = [];
     console.log(jobList);
-    for (let i = 0; i < jobList.length; i++) {
+    for (let i = 0; i < 3; i++) {
       latestJobs.push(jobList[i]);
     }
     this.setState({
@@ -25,31 +34,49 @@ class Home extends Component {
     });
   };
 
+  submitJob = async e => {
+    e.preventDefault();
+    const formData = this.state.formData;
+    try {
+      console.log(formData.location)
+      const response = await axios.get(`http://localhost:3001/jobs/job-titles/${formData.jobTitle}/${formData.location}`);
+      this.setState({
+        jobs: response.data,
+        isClicked: true
+      })
+      console.log(this.state.jobs);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  handleChange = (event) => {
+    let value = event.target.value
+    let name = event.target.name
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value
+      }
+    }))
+  }
+
   render() {
     return (
       <div className="homepage">
         <div className="homePageFormDiv">
-          <form className="homepageForm">
-            <input
-              type="text"
-              name="username"
-              placeholder="Job Title"
-              value=""
-              className="homeInput1"
-              value=""
-              // onChange=""
-            />
-            <input
-              type="text"
-              name="username"
-              placeholder="City"
-              value=""
-              className="homeInput2"
-              value=""
-              // onChange=""
-            />
-            <input type="submit" placeholder="Search Job" id="submitJob" />
-          </form>
+        <form className="homepageForm" onSubmit={this.submitJob}>
+          <select className="jobTitle" onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
+            <option disabled>Job Title</option>
+            {this.state.jobTitle.map(job => (
+              <><option>{job}</option></>))}
+          </select>
+          <select className="location" onChange={this.handleChange} name="location" type="text" placeholder="location" defaultValue="City">
+            <option disabled>City</option>
+            {this.state.location.map(city => (
+              <><option>{city}</option></>))}
+          </select>
+          <input type="submit" id="searchButton"/>
+        </form>
         </div>
 
         <div className="top3Jobs">
@@ -57,8 +84,12 @@ class Home extends Component {
             <div className="home3Jobs">
               <h1>{job.jobTitle}</h1>
               <h3>{job.jobId}</h3>
+              <h3>{job.salary}</h3>
             </div>
           ))}
+          <div>
+            
+          </div>
         </div>
       </div>
     );

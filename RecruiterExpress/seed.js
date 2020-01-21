@@ -16,7 +16,7 @@ const seed = async () => {
     jobId: "20001-AA",
     jobDescription: "This is the job description region",
     jobRequirements: "This is a list of Job descriptions",
-    location: "This is the location of the job",
+    location: "New York",
     salary: "$1,000,000"
   });
   const job2 = await Jobs.create({
@@ -24,7 +24,7 @@ const seed = async () => {
     jobId: "20001-AA",
     jobDescription: "This is the job description region",
     jobRequirements: "This is a list of Job descriptions",
-    location: "This is the location of the job",
+    location: "New York",
     salary: "$1,000,000"
   });
   const job3 = await Jobs.create({
@@ -32,8 +32,26 @@ const seed = async () => {
     jobId: "20001-AA",
     jobDescription: "This is the job description region",
     jobRequirements: "This is a list of Job descriptions",
-    location: "This is the location of the job",
+    location: "New York",
     salary: "$1,000,000"
+  });
+
+  const job4 = await Jobs.create({
+    jobTitle: "Architecture",
+    jobId: "20001-AW",
+    jobDescription: "This is the job description region",
+    jobRequirements: "This is a list of Job descriptions",
+    location: "Texas",
+    salary: "$2,000,000"
+  });
+
+  const job5 = await Jobs.create({
+    jobTitle: "DJ",
+    jobId: "20001-AW",
+    jobDescription: "This is the job description region",
+    jobRequirements: "This is a list of Job descriptions",
+    location: "LA",
+    salary: "$20,000"
   });
 
 
@@ -57,7 +75,7 @@ const seed = async () => {
   await recruiter2.addJobs(job2);
   await recruiter1.addJobs(job3);
 
-  await admin.addJobs([job1, job2, job3])
+  await admin.addJobs([job1, job2, job3, job4, job5])
   await admin.addRecruiter([recruiter1, recruiter2])
 
   process.exit();

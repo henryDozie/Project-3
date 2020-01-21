@@ -51,7 +51,7 @@ nav > a {
   display: flex;
   flex-direction: column;
   width: 99vw;
-  height: 35vh;
+  height: 25vh;
   /* border: 4px solid red; */
 }
 
@@ -60,7 +60,7 @@ nav > a {
   flex-direction: row;
   width: 60vw;
   height: 7vh;
-  margin-top: 20vh;
+  margin-top: 10vh;
   margin-left: 15vw;
   margin-right: 15vw;
   margin-bottom: 5vw;
@@ -69,7 +69,7 @@ nav > a {
   /* border: 4px solid red; */
 }
 
-.homeInput1 {
+.jobTitle {
   width: 40vw;
   font-size: 3em;
   text-align: center;
@@ -79,16 +79,16 @@ nav > a {
   opacity: 0.3;
 }
 
-.homeInput2 {
+.location {
   width: 15vw;
   font-size: 3em;
   text-align: center;
 }
 
-#submitJob {
+#searchButton {
   /* display: inline-block; */
   padding: 10px 15px;
-  font-size: 1.5em;
+  font-size: 1.8em;
   border-radius: 0;
   -webkit-appearance: none;
   background-color: lightgreen;
@@ -103,17 +103,17 @@ nav > a {
 
 .home3Jobs{
   width: 22vw;
-  height: 28vh;
+  /* height: 28vh; */
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 5vh auto;
+  margin: 0vh auto;
   color: black;
   font-size: 1.1em;
-  opacity: 0.4;
+  opacity: 1;
   transition: 0.5s;
   box-shadow: 3px 3px 3px 3px black;
-  animation: bannerResults 2s linear infinite;
+  /* animation: bannerResults 2s linear infinite; */
   transition: opacity 1s ease-in-out;
   transform: translate3d(0, 0, 0);
 }
