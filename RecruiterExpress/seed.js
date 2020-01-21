@@ -75,8 +75,8 @@ const seed = async () => {
   await recruiter2.addJobs(job2);
   await recruiter1.addJobs(job3);
 
-  await admin.addJobs([job1, job2, job3, job4, job5])
-  await admin.addRecruiter([recruiter1, recruiter2])
+  // await admin.addJobs([job1, job2, job3, job4, job5])
+  // await admin.addRecruiter([recruiter1, recruiter2])
 
   process.exit();
 };
