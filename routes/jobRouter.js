@@ -2,14 +2,13 @@ const { Router } = require("express");
 const jobRouter = Router();
 const { Jobs, Recruiter } = require("../models.js");
 
-
 jobRouter.get("/:recruiterId", async (req, res) => {
   try {
     const recruiterId = req.params.recruiterId;
     console.log(recruiterId);
 
     const jobs = await Jobs.findAll({
-      where: { recruiterId }
+      where: { userId: recruiterId }
     });
     res.json({ jobs });
   } catch (e) {
@@ -31,7 +30,7 @@ jobRouter.get("/:id", async (req, res) => {
 });
 
 // #######################################
-//THIS IS THE NEW JOB ROUTER POST 
+//THIS IS THE NEW JOB ROUTER POST
 // #######################################
 
 jobRouter.post("/:id", async (req, res) => {
@@ -40,7 +39,7 @@ jobRouter.post("/:id", async (req, res) => {
     const jobs = await Jobs.create({
       ...req.body,
       userId: recruiter
-    })
+    });
     res.json({ jobs });
   } catch (e) {
     res.json({ error: e.message });
@@ -66,7 +65,7 @@ jobRouter.delete("/:id", async (req, res) => {
     const id = req.params.id;
     const job = await Jobs.findByPk(id);
     await job.destroy();
-    res.json('Deleted')
+    res.json("Deleted");
   } catch (e) {
     res.json({ error: e.message });
   }
@@ -74,32 +73,41 @@ jobRouter.delete("/:id", async (req, res) => {
 
 module.exports = jobRouter;
 
-jobRouter
-  .route("/")
-  .get(async (req, res, next) => {
-    try {
-      const jobs = await Jobs.findAll();
-      res.json(jobs);
-    } catch (e) {
-      next(e);
+jobRouter.route("/").get(async (req, res, next) => {
+  try {
+    const jobs = await Jobs.findAll();
+    res.json(jobs);
+  } catch (e) {
+    next(e);
+  }
+});
+
+jobRouter.route('/job-titles/:jobTitle/:location').get(async (req, res) => {
+  const job = await Jobs.findAll({
+    where: {
+      jobTitle: req.params.jobTitle,
+      location: req.params.location
     }
-  });
-  // .post(async (req, res, next) => {
-  //   try {
-  //     debugger;
-  //     // const job = req.body.job;
-  //     const rec = req.body.recruiter;
-  //     console.log(rec);
-  //     const jobs = await Jobs.create({
-  //       ...req.body.job,
-  //       userId: rec.recruiter,
-  //       recruiterId: rec.recruiter
-  //     });
-  //     res.json(jobs);
-  //   } catch (e) {
-  //     next(e);
-  //   }
-  // });
+  })
+  res.json(job);
+  console.log(job);
+})
+// .post(async (req, res, next) => {
+//   try {
+//     debugger;
+//     // const job = req.body.job;
+//     const rec = req.body.recruiter;
+//     console.log(rec);
+//     const jobs = await Jobs.create({
+//       ...req.body.job,
+//       userId: rec.recruiter,
+//       recruiterId: rec.recruiter
+//     });
+//     res.json(jobs);
+//   } catch (e) {
+//     next(e);
+//   }
+// });
 
 // jobRouter
 //   .route("/:id")

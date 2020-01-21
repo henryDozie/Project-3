@@ -26,14 +26,14 @@ export default class Jobs extends Component {
     return (
       
         <div className="jobCardDiv">
-          {this.state.jobs.map(jobs => (
+          {this.state.jobs.map(job => (
             <div className="jobCard">
-              <h3>{jobs.jobTitle}</h3>
-              <h4>{jobs.jobId}</h4>
-              <p>{jobs.jobDescription}</p>
-              <p>{jobs.salary}</p>
-              <p>{jobs.jobRequirements}</p>
-              <p>{jobs.location}</p>
+              <h3>{job.jobTitle}</h3>
+              <h4>{job.jobId}</h4>
+              <p>{job.jobDescription}</p>
+              <p>{job.salary}</p>
+              <p>{job.jobRequirements}</p>
+              <p>{job.location}</p>
             </div>
           ))}
         </div>

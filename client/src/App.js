@@ -93,7 +93,6 @@ class App extends Component {
         <Route path="/createJob" render={() => <CreateJob currentUser={this.state.currentUser}/>}  />
         <Route path="/jobs" render={() => <Jobs />} />
         <Route path="/home" render={() => <Home />} />
-        {/* <Route path="/" render={() => <Home />} /> */}
         <Footer />
       </div>
     );
