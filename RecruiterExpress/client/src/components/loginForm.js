@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-g
+
 
 class LoginForm extends Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class LoginForm extends Component {
           })
         }
       >
-        <h2>Login</h2>
         <label htmlFor="username">Username</label>
         <input
           type="text"

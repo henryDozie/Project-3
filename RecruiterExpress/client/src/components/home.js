@@ -18,6 +18,14 @@ class Home extends Component {
   }
 
 
+  componentDidMount() {
+    this.setState({
+      jobs: null,
+      isClicked: false
+    })
+  }
+
+
   submitJob = async e => {
     e.preventDefault();
     const formData = this.state.formData;
@@ -49,7 +57,6 @@ class Home extends Component {
 
   render() {
     return (
-
       <div className="homepage">
         <form className="search" onSubmit={this.submitJob}>
           <select className="jobTitle" onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
@@ -66,8 +73,10 @@ class Home extends Component {
           <button id="button">SUBMIT</button>
         </form>
 
-        <Jobs
-          jobs={this.state.jobs} />
+        {this.state.isClicked &&
+          <Jobs
+            jobs={this.state.jobs} />
+        }
       </div >
 
     )

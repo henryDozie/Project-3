@@ -98,6 +98,12 @@ body{
   height: 20px;
 }
 
+.login{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 
 
 

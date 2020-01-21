@@ -10,7 +10,6 @@ export default class Jobs extends Component {
   }
 
 
-
   render() {
     return (
       <div className="jobOption">

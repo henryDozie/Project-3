@@ -17,7 +17,7 @@ class App extends Component {
       currentUser: null,
       errorText: "",
       jobTitle: ['Software Engineer', 'Computer Science', 'Architecture'],
-      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando'],
+      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando']
     };
   }
   handleLogin = async (e, loginData) => {
@@ -74,6 +74,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Route path="/login" render={() => <LoginForm handleLogin={this.handleLogin} />} />
+        <Route path="/register" render={() => <RegisterForm handleRegister={this.handleRegister} />} />
         <nav className="main">
           {this.state.currentUser ? (
             <div>
@@ -86,8 +88,6 @@ class App extends Component {
               <button onClick={this.handleLogout}>Logout</button>
             </div>
           ) : (<></>)}
-          <Route path="/login" render={() => <LoginForm handleLogin={this.handleLogin} />} />
-          <Route path="/register" render={() => <RegisterForm handleRegister={this.handleRegister} />} />
           <Route path="/home" render={() => <Home jobTitle={this.state.jobTitle} location={this.state.location} />} />
         </nav>
         {this.state.errorText && (<p className="error">{this.state.errorText}</p>)}
