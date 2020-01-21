@@ -8,6 +8,8 @@ import About from "./components/about";
 import { loginUser, registerUser, verifyUser } from "./services/api_helper";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
+import Recruiters from "./components/recruiters";
+// import Home from "./components/home";
 import CreateJob from "./components/createJob";
 import Jobs from "./components/jobs";
 
@@ -16,7 +18,9 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
-      errorText: ""
+      errorText: "",
+      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture'],
+      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando'],
     };
   }
   handleLogin = async (e, loginData) => {
@@ -78,8 +82,13 @@ class App extends Component {
           {this.state.currentUser ? (
             <div>
               <p>Hello, {this.state.currentUser.username}</p>
+              <CreateJob
+                jobTitle={this.state.jobTitle}
+                location={this.state.location}
+                currentUser={this.state.currentUser}
+              />
               {/* <CreateJob /> */}
-              {/* <button class="logout" onClick={this.handleLogout}>Logout</button> */}
+              <button class="logout" onClick={this.handleLogout}>Logout</button>
             </div>
           ) : (
               <Link to="/login"></Link>

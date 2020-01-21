@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const jobRouter = Router();
-const { Jobs } = require("../models.js");
+const { Jobs, Recruiter } = require("../models.js");
 
 jobRouter
   .route("/")
@@ -49,5 +49,16 @@ jobRouter
       next(e);
     }
   });
+
+  jobRouter.route('/job-titles/:jobTitle/:location').get(async (req, res) => {
+    const job = await Jobs.findAll({
+      where: {
+        jobTitle: req.params.jobTitle,
+        location: req.params.location
+      }
+    })
+    res.json(job);
+    console.log(job);
+  })
 
 module.exports = jobRouter;

@@ -51,7 +51,8 @@ class LoginForm extends Component {
                 {/* <Link to="/register">Register</Link> */}
             </form>
              <Link to="/register">Register</Link> 
-             <Link to="/createJob">Create Job</Link>
+             {/* <Link to="/createJob">Create Job</Link>              */}
+             <img class="imgCenter" src="https://images.pexels.com/photos/2253926/pexels-photo-2253926.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=800"></img>
             </div>
         );
     }

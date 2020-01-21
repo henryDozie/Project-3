@@ -32,7 +32,8 @@ export default class CreateJob extends Component {
           jobDescription: this.state.jobDescription,
           jobRequirements: this.state.jobRequirements,
           location: this.state.location,
-          salary: this.state.salary
+          salary: this.state.salary,
+          recruiterId: this.state.currentUser.id
         },
         {
           headers: {
@@ -56,6 +57,7 @@ export default class CreateJob extends Component {
           value={this.state.text}
           onChange={this.handleChange}
           placeholder="Job Title"
+          id="jobTitle"
         />
         <input
           type="textarea"
@@ -63,6 +65,7 @@ export default class CreateJob extends Component {
           value={this.state.text}
           onChange={this.handleChange}
           placeholder="Job ID"
+          id="jobId"
         />
         <input
           type="textarea"
@@ -70,6 +73,7 @@ export default class CreateJob extends Component {
           value={this.state.text}
           onChange={this.handleChange}
           placeholder="Job Description"
+          id="jobDescription"
         />
         <input
           type="textarea"
@@ -77,6 +81,7 @@ export default class CreateJob extends Component {
           value={this.state.text}
           onChange={this.handleChange}
           placeholder="Job Requirements"
+          id="jobRequirement"
         />
         <input
           type="textarea"
@@ -84,6 +89,7 @@ export default class CreateJob extends Component {
           value={this.state.text}
           onChange={this.handleChange}
           placeholder="Location"
+          id="jobLocation"
         />
         <input
           type="textarea"
@@ -91,8 +97,12 @@ export default class CreateJob extends Component {
           value={this.state.text}
           onChange={this.handleChange}
           placeholder="Salary"
+          id="jobSalary"
         />
-        <input type="submit" />
+        <input
+           type="submit"
+           id="jobSubmit"
+         />
       </form>
     );
   }

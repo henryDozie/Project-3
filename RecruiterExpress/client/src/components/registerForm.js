@@ -17,6 +17,7 @@ class RegisterForm extends Component {
   };
   render() {
     return (
+        <div>
       <form
         className="register"
         onSubmit={e =>
@@ -45,6 +46,8 @@ class RegisterForm extends Component {
         />
         <input class="submit" type="submit" value="Create Account" />
       </form>
+      <img class="imgCenter" src="https://images.pexels.com/photos/2253926/pexels-photo-2253926.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=800"></img>
+    </div>
     );
   }
 }

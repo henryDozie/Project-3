@@ -1,6 +1,5 @@
-
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class Jobs extends Component {
   constructor(props) {
@@ -8,35 +7,37 @@ export default class Jobs extends Component {
 
     this.state = {
       jobs: []
-    }
+    };
   }
   async componentDidMount() {
     try {
-      const response = await axios.get('http://localhost:3001/jobs');
+      const response = await axios.get("http://localhost:3001/jobs");
       console.log(response);
       this.setState({
         jobs: response.data
-      })
+      });
     } catch (e) {
       console.error(e);
     }
-    console.log(this.state)
+    console.log(this.state);
   }
 
   render() {
     return (
-      <div >
-        {this.state.jobs.map(job => (
-          <div className="jobs">
-            <h3>{job.jobTitle}</h3>
-            <h4>{job.jobId}</h4>
-            <p>{job.jobDescription}</p>
-            <p>{job.location}</p>
-            <p>{job.jobRequirements}</p>
-            <h1>{job.salary}</h1>
-          </div>
-        ))}
-      </div>
-    )
+      
+        <div className="jobCardDiv">
+          {this.state.jobs.map(jobs => (
+            <div className="jobCard">
+              <h3>{jobs.jobTitle}</h3>
+              <h4>{jobs.jobId}</h4>
+              <p>{jobs.jobDescription}</p>
+              <p>{jobs.salary}</p>
+              <p>{jobs.jobRequirements}</p>
+              <p>{jobs.location}</p>
+            </div>
+          ))}
+        </div>
+      
+    );
   }
 }

@@ -25,14 +25,37 @@ input[type=text]{
   border: 1px solid #555;
   outline: none;
 }
-
+body{
   /* background-image: url("https://i.imgur.com/DHu3EOq.jpg"); */
- /* background: url("https://images.pexels.com/photos/2253926/pexels-photo-2253926.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");  */
+  /* background: url("https://images.pexels.com/photos/2253926/pexels-photo-2253926.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");  */
   
-   /* margin-left: auto;
+   margin-left: auto;
   margin-right: auto;
 
-} */
+}
+.imgCenter{
+
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+}
+
+input[type=submit] {
+  width: 100px;
+  font-size: 50px;
+  padding: 15px;
+  margin: 3px;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 100px;
+  color: white;
+  background-color: #333333;
+  border: 3px solid rgb(63, 127, 191, 0.9);
+  outline: none;
+}
 input[type=password]{
   width: 20%;
   padding: 12px 20px;
@@ -155,6 +178,130 @@ height: 40px;
   text-align: center;
   color: black;
   text-transform: none;
+}
+.home3Jobs{
+  width: 22vw;
+  height: 28vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 5vh auto;
+  color: black;
+  font-size: 1.1em;
+  opacity: 0.4;
+  transition: 0.5s;
+  box-shadow: 3px 3px 3px 3px black;
+  animation: bannerResults 2s linear infinite;
+  transition: opacity 1s ease-in-out;
+  transform: translate3d(0, 0, 0);
+}
+
+.jobCard {
+  width: 20.5vw;
+  /* background-color: cadetblue; */
+  /* height: 35vh; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 2vh auto;
+  color: black;
+  font-size: 1.1em;
+  opacity: 1;
+  transition: 0.5s;
+  box-shadow: 3px 3px 3px 3px black;
+  font-family: "Lucida Console", Monaco, monospace;
+  padding: 10px;
+}
+.jobCardDiv{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1vw;
+  margin: 0 5vw 0 5vw;
+}
+.jobCard:hover{
+  transform: scale(1.05);
+}
+
+@keyframes bannerResults {
+  0% {
+    opacity: 0.1;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.home3Jobs:hover {
+  opacity: 1;
+  transform: scale3d();
+}
+
+.jobCreateForm {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  border-radius: 5px;
+  margin: 10vh auto;
+}
+
+#jobTitle{
+  height: 3vh;
+  border-radius: 5px;
+}
+#jobId{
+  height: 3vh;
+  border-radius: 5px;
+}
+#jobDescription{
+  height: 15vh;
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#jobRequirement{
+  height: 15vh;
+  border-radius: 5px;
+  overflow: scroll;
+  /* overflow-x: hidden; */
+}
+
+#jobLocation{
+  height: 3vh;
+  border-radius: 5px;
+}
+
+#jobSalary{
+  height: 3vh;
+  border-radius: 5px;
 }
 ul.topnav li a:hover:not(.active) {background-color: #111;}
 
