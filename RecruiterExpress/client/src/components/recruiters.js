@@ -20,18 +20,22 @@ export default class Recruiters extends Component {
     } catch (e) {
       console.error(e);
     }
-    console.log(this.state)
+    // console.log(this.state)
   }
+
+  // axios.get(`http://localhost:3001/jobs/${props.currentUser}`)
 
 
   render() {
     return (
-      <div>
+      <div className="jobCard">
         {this.state.recruiters.map(recruiters => (
           <div>
             <h3>{recruiters.name}</h3>
             <h4>{recruiters.rating}</h4>
             <p>{recruiters.jobCount}</p>
+            <p>{recruiters.review}</p>
+            <button>See Jobs</button>
           </div>
         ))}
       </div>
