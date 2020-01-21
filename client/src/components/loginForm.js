@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import App from '../App'
-// import axios from "axios";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -52,7 +49,7 @@ class LoginForm extends Component {
         <input className="submit" type="submit" value="Login" />
         <button onClick={e => this.props.handleRegister(e)}>Register</button>
         
-        <Link to="/register">Register</Link>
+        {/* <Link to="/register">Register</Link> */}
         </form>
         </div>
     );
