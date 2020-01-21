@@ -51,15 +51,13 @@ export default class CreateJob extends Component {
     e.preventDefault();
     try {
       axios.post(`http://localhost:3001/jobs/${this.state.recruiterId}`, {
-        //   jobTitle: this.state.jobTitle,
-        //   jobId: this.state.jobId,
-        //   jobDescription: this.state.jobDescription,
-        //   jobRequirements: this.state.jobRequirements,
-        //   location: this.state.location,
-        //   salary: this.state.salary
-        // });
-        formdata
-      }
+        jobTitle: this.state.formData.jobTitle,
+        jobId: this.state.formData.jobId,
+        jobDescription: this.state.formData.jobDescription,
+        jobRequirements: this.state.formData.jobRequirements,
+        location: this.state.formData.location,
+        salary: this.state.formData.salary
+      });
     } catch (e) {
       console.error(e);
     }
@@ -67,7 +65,7 @@ export default class CreateJob extends Component {
 
   componentDidMount = e => {
     this.setState({
-      recruiterId: this.state.recruiterId
+      recruiterId: this.props.currentUser.id
     });
   };
 
