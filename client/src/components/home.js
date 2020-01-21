@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Details from "./details";
 
 class Home extends Component {
   constructor(props) {
@@ -25,8 +24,7 @@ class Home extends Component {
         jobTitle: null,
         location: null
       },
-      isClicked: false,
-      isViewed: false
+      isClicked: false
     };
   }
 
@@ -72,12 +70,6 @@ class Home extends Component {
     }));
   };
 
-  onClick = e => {
-    this.setState({
-      isViewed: true
-    })
-  }
-
   render() {
     return (
       <div className="homepage">
@@ -120,15 +112,9 @@ class Home extends Component {
         <div className="top3Jobs">
           {this.state.jobs.map(job => (
             <div className="home3Jobs">
-              <h3>{job.jobTitle}</h3>
-              <p>{job.location}</p>
-              <button onClick={this.onClick}>view</button>
-              {this.state.isViewed &&
-                <Details
-                  jobDescription={job.jobDescription}
-                  jobRequirements={job.jobRequirements}
-                  salary={job.salary} />
-              }
+              <h1>{job.jobTitle}</h1>
+              <h3>{job.jobId}</h3>
+              <h3>{job.salary}</h3>
             </div>
           ))}
           <div></div>

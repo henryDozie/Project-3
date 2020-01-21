@@ -1,106 +1,127 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Jobs from "./jobs";
-export default class CreateJob extends Component {
+
+class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      jobTitle: "",
-      jobId: "",
-      jobDescription: "",
-      jobRequirements: "",
-      location: "",
-      salary: "",
-      jobs: []
+      jobs: [],
+      flag: false,
+      searchedJobs: [],
+      apiLoaded: false,
+      jobTitle: ["Software Engineer", "Computer Science", "Architecture", "DJ"],
+      location: [
+        "New York",
+        "New Jersey",
+        "Conneticut",
+        "Virginia",
+        "Orlando",
+        "LA",
+        "Texas"
+      ],
+      formData: {
+        jobTitle: null,
+        location: null
+      },
+      isClicked: false
     };
   }
 
-  handleChange = e => {
-    let { name, value } = e.target;
+  componentDidMount = async e => {
+    const response = await axios.get("http://localhost:3001/jobs");
+    let jobList = response.data;
+    let latestJobs = [];
+    console.log(jobList);
+    for (let i = 0; i < 3; i++) {
+      latestJobs.push(jobList[i]);
+    }
     this.setState({
-      [name]: value
+      jobs: latestJobs,
+      apiLoaded: true
     });
   };
 
   submitJob = async e => {
     e.preventDefault();
+    const formData = this.state.formData;
     try {
-      const newJob = axios.post(
-        `http://localhost:3001/jobs`,
-        {
-          jobTitle: this.state.jobTitle,
-          jobId: this.state.jobId,
-          jobDescription: this.state.jobDescription,
-          jobRequirements: this.state.jobRequirements,
-          location: this.state.location,
-          salary: this.state.salary
-        },
-        {
-          headers: {
-            authorization: "Bearer " + localStorage.getItem("token"),
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          }
-        }
+      console.log(formData.location);
+      const response = await axios.get(
+        `http://localhost:3001/jobs/job-titles/${formData.jobTitle}/${formData.location}`
       );
-      const response = await axios.get(`http://localhost:3001/jobs/user/${this.state.jobId}`);
       this.setState({
-        jobs: response.data
-      })
+        jobs: response.data,
+        isClicked: true
+      });
+      console.log(this.state.jobs);
     } catch (e) {
       console.error(e);
     }
   };
+  handleChange = event => {
+    let value = event.target.value;
+    let name = event.target.name;
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value
+      }
+    }));
+  };
 
   render() {
     return (
-      <form onSubmit={this.submitJob} className="jobCreateForm">
-        <select onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
-          <option disabled>Job Title</option>
-          {this.props.jobTitle.map(job => <>
-            <option>{job}</option>
-          </>)}
-        </select>
-        <input
-          type="textarea"
-          name="jobId"
-          value={this.state.text}
-          onChange={this.handleChange}
-          placeholder="Job ID"
-        />
-        <input
-          type="textarea"
-          name="jobDescription"
-          value={this.state.text}
-          onChange={this.handleChange}
-          placeholder="Job Description"
-        />
-        <input
-          type="textarea"
-          name="jobRequirements"
-          value={this.state.text}
-          onChange={this.handleChange}
-          placeholder="Job Requirements"
-        />
-        <select onChange={this.handleChange} name="location" type="text" placeholder="Location" defaultValue="Location">
-          <option disabled>Location</option>
-          {this.props.location.map(city => <>
-            <option>{city}</option>
-          </>)}
-        </select>
-        <input
-          type="textarea"
-          name="salary"
-          value={this.state.text}
-          onChange={this.handleChange}
-          placeholder="Salary"
-        />
-        <input type="submit" />
-            
-        <Jobs
-          jobs={this.state.jobs} />
-      </form>
+      <div className="homepage">
+        <div className="homePageFormDiv">
+          <form className="homepageForm" onSubmit={this.submitJob}>
+            <select
+              className="jobTitle"
+              onChange={this.handleChange}
+              name="jobTitle"
+              type="text"
+              placeholder="Job Title"
+              defaultValue="Job Title"
+            >
+              <option disabled>Job Title</option>
+              {this.state.jobTitle.map(job => (
+                <>
+                  <option>{job}</option>
+                </>
+              ))}
+            </select>
+            <select
+              className="location"
+              onChange={this.handleChange}
+              name="location"
+              type="text"
+              placeholder="location"
+              defaultValue="City"
+            >
+              <option disabled>City</option>
+              {this.state.location.map(city => (
+                <>
+                  <option>{city}</option>
+                </>
+              ))}
+            </select>
+            <input type="submit" id="searchButton" />
+          </form>
+        </div>
+
+        <div className="top3Jobs">
+          {this.state.jobs.map(job => (
+            <div className="home3Jobs">
+              <h1>{job.jobTitle}</h1>
+              <h3>{job.jobId}</h3>
+              <h3>{job.salary}</h3>
+            </div>
+          ))}
+          <div></div>
+        </div>
+      </div>
     );
   }
 }
+
+export default Home;

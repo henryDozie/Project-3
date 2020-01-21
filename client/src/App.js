@@ -10,16 +10,13 @@ import CreateJob from "./components/createJob";
 import Jobs from "./components/jobs";
 import Recruiters from "./components/recruiters";
 import Home from "./components/home";
-import About from "./components/about";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: null,
-      errorText: "",
-      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture'],
-      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando']
+      errorText: ""
     };
   }
   handleLogin = async (e, loginData) => {
@@ -39,7 +36,6 @@ class App extends Component {
   };
   handleRegister = async (e, registerData) => {
     e.preventDefault();
-    console.log(registerData)
     if (!registerData.username || !registerData.password) {
       this.setState({
         errorText: "You must supply a username And password"
@@ -84,23 +80,19 @@ class App extends Component {
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
-
+    
         {this.state.errorText && (
           <h2 className="error">{this.state.errorText}</h2>
         )}
-
+        
         <Route
           path="/register"
           render={() => <RegisterForm handleRegister={this.handleRegister} />}
         />
         <Route path="/recruiters" render={() => <Recruiters />} />
-        <Route
-          path="/createJob"
-          render={() => <CreateJob currentUser={this.state.currentUser} />}
-        />
+        <Route path="/createJob" render={() => <CreateJob currentUser={this.state.currentUser}/>}  />
         <Route path="/jobs" render={() => <Jobs />} />
         <Route path="/home" render={() => <Home />} />
-        <Route path="/about" render={() => <About />} />
         <Footer />
       </div>
     );

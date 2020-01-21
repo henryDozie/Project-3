@@ -57,8 +57,7 @@ class Header extends Component {
             </div>
           ) : (
             <div></div>
-            )}
-          <Link to="/about">About</Link>
+          )}
         </nav>
       </div>
     );

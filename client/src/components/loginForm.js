@@ -5,16 +5,14 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       username: "",
-      password: "",
-      isLoggedIn: false
+      password: ""
     };
   }
 
   onChange = async e => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value,
-      isLoggedIn: true
+      [name]: value
     });
   };
 
