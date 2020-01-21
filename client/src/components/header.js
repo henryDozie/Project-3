@@ -39,12 +39,13 @@ class Header extends Component {
           {/* <Link to="/login">Login / Register</Link> */}
           {!this.state.register ? (
             <LoginForm
-              handleRegister={this.handleRegister}
+            handleRegister={this.handleRegister}
               handleLogin={this.props.handleLogin}
             />
           ) : (
               <RegisterForm
                 handleBack={this.handleBack}
+                
               />
           )}
 
