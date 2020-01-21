@@ -21,6 +21,7 @@ class Header extends Component {
       <nav className="header">
         <span className="logo">
           <Link to="/home">Logo</Link>
+          <Link to="/about">About</Link>
         </span>
         {!this.state.isClicked &&
           <span className="logReg">

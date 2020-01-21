@@ -9,6 +9,7 @@ import RegisterForm from "./components/registerForm";
 import CreateJob from "./components/createJob";
 import Jobs from "./components/jobs";
 import Home from "./components/home";
+import About from "./components/about";
 
 class App extends Component {
   constructor(props) {
@@ -89,6 +90,8 @@ class App extends Component {
             </div>
           ) : (<></>)}
           <Route path="/home" render={() => <Home jobTitle={this.state.jobTitle} location={this.state.location} />} />
+          <Route path="/about" render={() => <About />}
+          />
         </nav>
         {this.state.errorText && (<p className="error">{this.state.errorText}</p>)}
         <Footer />

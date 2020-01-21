@@ -77,6 +77,8 @@ class Home extends Component {
           <Jobs
             jobs={this.state.jobs} />
         }
+
+        {console.log(this.state.isClicked)}
       </div >
 
     )
