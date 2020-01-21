@@ -119,17 +119,24 @@ nav > a {
 }
 
 .jobCard {
-  width: 22vw;
-  height: 28vh;
+  width: 20.5vw;
+  /* background-color: cadetblue; */
+  /* height: 35vh; */
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 5vh auto;
+  margin: 2vh auto;
   color: black;
   font-size: 1.1em;
   opacity: 1;
   transition: 0.5s;
   box-shadow: 3px 3px 3px 3px black;
+  font-family: "Lucida Console", Monaco, monospace;
+  padding: 10px;
+}
+
+.jobCard:hover{
+  transform: scale(1.05);
 }
 
 .jobCardDiv{
