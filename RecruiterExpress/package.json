@@ -7,8 +7,8 @@
     "start": "nodemon server.js"
   },
   "engines": {
-    "node": ">= 6.9.4",
-    "npm": ">= 4.4.0"
+    "node": "v12.9.1",
+    "npm": "6.13.2"
   },
   "keywords": [],
   "author": "",
