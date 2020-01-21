@@ -4,9 +4,12 @@ const { Sequelize } = require("sequelize");
 // Create a variable that is a connection to the database.
 let sequelize;
 
+console.log(process.env.DATABASE_URL)
+
 if(process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
+    protocol: 'postgres',
     define: {
       underscored: true
     }
@@ -15,6 +18,7 @@ if(process.env.DATABASE_URL) {
  sequelize = new Sequelize({
   database: "wingRecruiter_db",
   dialect: "postgres",
+  protocol: 'postgres',
   define: {
     underscored: true
   }
