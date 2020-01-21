@@ -1,26 +1,67 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import About from '../components/about'
+import LoginForm from "./loginForm";
+import RegisterForm from "./registerForm";
 
+// import CreateJob from "./createJob";
 
-const Header = (props) => {
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      register: false,
+      username: "",
+      password: ""
+    };
+  }
+
+  handleRegister = e => {
+    e.preventDefault();
+    this.setState({
+      register: true
+    });
+  };
+
+  handleBack = e => {
+    e.preventDefault();
+    this.setState({
+      register: false
+    });
+  };
+
+  render() {
     return (
-       
-        <div>
+      <div className="header">
+        <div className="logo"><h1>Logo</h1></div>
         <nav>
-            <ul class="topnav">
-            <li><Link to="/" class="active">Home </Link></li>
-            <li><Link to="/jobs">Jobs </Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-            <li class="right"><Link to="/About">About US</Link></li>
-            </ul>
+          <Link to="/home">Home</Link>
+          <Link to="/jobs">Jobs</Link>
+          {/* <Link to="/login">Login / Register</Link> */}
+          {!this.state.register ? (
+            <LoginForm
+            handleRegister={this.handleRegister}
+              handleLogin={this.props.handleLogin}
+            />
+          ) : (
+              <RegisterForm
+                handleBack={this.handleBack}
+                
+              />
+          )}
+
+          {this.props.currentUser ? (
+            <div>
+              <Link to="/recruiters">Recruiters</Link>
+              <Link to="/createJob">Post Jobs</Link>
+              <button onClick={this.props.handleLogout}>Logout</button>
+            </div>
+          ) : (
+            <div></div>
+            )}
+          <Link to="/about">About</Link>
         </nav>
-        
-        </div>
-       
+      </div>
     );
-};
-
+  }
+}
 export default Header;
-

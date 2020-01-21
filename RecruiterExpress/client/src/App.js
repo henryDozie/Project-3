@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Home from "./components/home";
 import About from "./components/about";
+import Jobs from "./components/jobs";
 import { loginUser, registerUser, verifyUser } from "./services/api_helper";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import Recruiters from "./components/recruiters";
 // import Home from "./components/home";
 import CreateJob from "./components/createJob";
-import Jobs from "./components/jobs";
 
 class App extends Component {
   constructor(props) {
@@ -75,52 +75,34 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.currentUser);
     return (
       <div className="App">
-        <Header />
-        <nav>
-          {this.state.currentUser ? (
-            <div>
-              <p>Hello, {this.state.currentUser.username}</p>
-              <CreateJob
-                jobTitle={this.state.jobTitle}
-                location={this.state.location}
-                currentUser={this.state.currentUser}
-              />
-              {/* <CreateJob /> */}
-              <button class="logout" onClick={this.handleLogout}>Logout</button>
-            </div>
-          ) : (
-              <Link to="/login"></Link>
-            )}
-        </nav>
+        <Header
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+          handleLogin={this.handleLogin}
+        />
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+
         {this.state.errorText && (
-          <p className="error">{this.state.errorText}</p>
+          <h2 className="error">{this.state.errorText}</h2>
         )}
-        <main>
-          <Switch>
-            <Route
-              path="/jobs"
-              render={() => <Jobs />}
-            />
-            <Route path="/about" render={() => <About />}
-            />
-            <Route
-              path="/login"
-              render={() => <LoginForm handleLogin={this.handleLogin} />}
-            />
-            <Route path="/createJob" render={() => <CreateJob />}
-            />
-            <Route
-              path="/register"
-              render={() => <RegisterForm handleRegister={this.handleRegister} />}
-            />
-            <Route
-              path="/"
-              render={() => <Home />}
-            />
-          </Switch>
-        </main>
+
+        <Route
+          path="/register"
+          render={() => <RegisterForm handleRegister={this.handleRegister} />}
+        />
+        <Route path="/recruiters" render={() => <Recruiters />} />
+        <Route
+          path="/createJob"
+          render={() => <CreateJob currentUser={this.state.currentUser} />}
+        />
+        <Route path="/jobs" render={() => <Jobs />} />
+        <Route path="/home" render={() => <Home />} />
+        <Route path="/about" render={() => <About />} />
         <Footer />
       </div>
     );

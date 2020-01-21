@@ -1,35 +1,25 @@
 // inside models.js
 const { Sequelize } = require("sequelize");
-
-// Create a variable that is a connection to the database.
 let sequelize;
 
-sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-  define: {
-    underscored: true
-  }
-}
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    define: {
+      underscored: true
+    }
+  })
+} else {
 
-// if(process.env.DATABASE_URL) {
-//   sequelize = new Sequelize(process.env.DATABASE_URL, {
-//     dialect: 'postgres',
-//     protocol: 'postgres',
-//     define: {
-//       underscored: true
-//     }
-//   })
-// }else{
-//  sequelize = new Sequelize({
-//   database: "wingRecruiter_db",
-//   dialect: "postgres",
-//   protocol: 'postgres',
-//   define: {
-//     underscored: true
-//   }
-// });
-// }
+  // Create a variable that is a connection to the database.
+  sequelize = new Sequelize({
+    database: "wingRecruiter_db",
+    dialect: "postgres",
+    define: {
+      underscored: true
+    }
+  });
+}
 
 class Jobs extends Sequelize.Model {}
 
@@ -78,8 +68,9 @@ User.init(
 );
 
 User.hasMany(Jobs, { onDelete: "cascade" });
-Jobs.belongsTo(User);
 Recruiter.hasMany(Jobs, { onDelete: "cascade" });
+Jobs.belongsTo(Recruiter);
+Jobs.belongsTo(User);
 
 module.exports = {
   Jobs,

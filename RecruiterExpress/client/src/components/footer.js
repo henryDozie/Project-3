@@ -1,8 +1,7 @@
-import React from 'react';
-
+import React from "react";
 
 const Footer = () => (
-    <div class="Footer">
+    <div className="Footer">
         <p>WingRecruiter, Inc. © All Rights Reserved Worldwide</p>
     </div>
 
