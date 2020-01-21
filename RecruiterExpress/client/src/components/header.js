@@ -1,16 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import About from '../components/about'
+
 
 const Header = (props) => {
     return (
+       
         <div>
-        <img className="headerStyle" src="https://i.imgur.com/8o0vbRm.jpg"></img>
         <nav>
-            <Link to="/">Home/ </Link>
-            <Link to="/jobs">Jobs/ </Link>
-            {/* <button onClick={props.handleLogout}>Logout</button> */}
+            <ul class="topnav">
+            <li><Link to="/" class="active">Home </Link></li>
+            <li><Link to="/jobs">Jobs </Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+            <li class="right"><Link to="/About">About US</Link></li>
+            </ul>
         </nav>
         </div>
+       
     );
 };
 
