@@ -75,30 +75,32 @@ class App extends Component {
       <div className="App">
         <Header />
         <nav>
-           {this.state.currentUser ? (
-             <div>
-               <p>Hello, {this.state.currentUser.username}</p>
-               <CreateJob />
-               <button onClick={this.handleLogout}>Logout</button>
-             </div>
-           ) : (
-             <Link to="/login">Login / Register </Link>
-           )}
-         </nav>
+          {this.state.currentUser ? (
+            <div>
+              <p>Hello, {this.state.currentUser.username}</p>
+              {/* <CreateJob /> */}
+              {/* <button class="logout" onClick={this.handleLogout}>Logout</button> */}
+            </div>
+          ) : (
+              <Link to="/login"></Link>
+            )}
+        </nav>
         {this.state.errorText && (
           <p className="error">{this.state.errorText}</p>
         )}
         <main>
           <Switch>
-                 <Route
+            <Route
               path="/jobs"
               render={() => <Jobs />}
             />
-            <Route path="/about" render={() => <About/>}
+            <Route path="/about" render={() => <About />}
             />
             <Route
               path="/login"
               render={() => <LoginForm handleLogin={this.handleLogin} />}
+            />
+            <Route path="/createJob" render={() => <CreateJob />}
             />
             <Route
               path="/register"
@@ -108,14 +110,8 @@ class App extends Component {
               path="/"
               render={() => <Home />}
             />
-            {/* <Route
-              path="/jobs"
-              render={() => <Jobs />}
-            /> */}
-  
           </Switch>
         </main>
-        {/* <Jobs/> */}
         <Footer />
       </div>
     );
