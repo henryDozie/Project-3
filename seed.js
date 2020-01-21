@@ -16,24 +16,24 @@ const seed = async () => {
     jobId: "20001-AA",
     jobDescription: "This is the job description region",
     jobRequirements: "This is a list of Job descriptions",
-    Location: "This is the location of the job",
-    Salary: "$1,000,000"
+    location: "This is the location of the job",
+    salary: "$1,000,000"
   });
   const job2 = await Jobs.create({
     jobTitle: "Software Engineer",
     jobId: "20001-AA",
     jobDescription: "This is the job description region",
     jobRequirements: "This is a list of Job descriptions",
-    Location: "This is the location of the job",
-    Salary: "$1,000,000"
+    location: "This is the location of the job",
+    salary: "$1,000,000"
   });
   const job3 = await Jobs.create({
     jobTitle: "Software Engineer",
     jobId: "20001-AA",
     jobDescription: "This is the job description region",
     jobRequirements: "This is a list of Job descriptions",
-    Location: "This is the location of the job",
-    Salary: "$1,000,000"
+    location: "This is the location of the job",
+    salary: "$1,000,000"
   });
 
 
