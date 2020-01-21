@@ -16,7 +16,7 @@ class Home extends Component {
     let jobList = response.data;
     let latestJobs = [];
     console.log(jobList);
-    for (let i = 0; i < (jobList.length); i++) {
+    for (let i = 0; i < jobList.length; i++) {
       latestJobs.push(jobList[i]);
     }
     this.setState({
