@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Footer = () => (
-    <div class="footer">
+    <div class="Footer">
         <p>WingRecruiter, Inc. © All Rights Reserved Worldwide</p>
     </div>
 
