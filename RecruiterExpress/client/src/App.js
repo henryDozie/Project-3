@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
+import Home from "./components/home";
+import About from "./components/about";
 import { loginUser, registerUser, verifyUser } from "./services/api_helper";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
@@ -22,6 +24,7 @@ class App extends Component {
     if (!loginData.username || !loginData.password) {
       this.setState({
         errorText: "You must supply a username And password"
+
       });
     } else {
       e.preventDefault();
@@ -66,6 +69,7 @@ class App extends Component {
     this.handleVerify();
   }
 
+
   render() {
     return (
       <div className="App">
@@ -74,29 +78,45 @@ class App extends Component {
           {this.state.currentUser ? (
             <div>
               <p>Hello, {this.state.currentUser.username}</p>
-              <CreateJob />
-              <button onClick={this.handleLogout}>Logout</button>
+              {/* <CreateJob /> */}
+              {/* <button class="logout" onClick={this.handleLogout}>Logout</button> */}
             </div>
           ) : (
-            <Link to="/login">Login / Register </Link>
-          )}
+              <Link to="/login"></Link>
+            )}
         </nav>
         {this.state.errorText && (
           <p className="error">{this.state.errorText}</p>
         )}
-        <Route
-          path="/login"
-          render={() => <LoginForm handleLogin={this.handleLogin} />}
-        />
-        <Route
-          path="/register"
-          render={() => <RegisterForm handleRegister={this.handleRegister} />}
-        />
-        <Jobs />
+        <main>
+          <Switch>
+            <Route
+              path="/jobs"
+              render={() => <Jobs />}
+            />
+            <Route path="/about" render={() => <About />}
+            />
+            <Route
+              path="/login"
+              render={() => <LoginForm handleLogin={this.handleLogin} />}
+            />
+            <Route path="/createJob" render={() => <CreateJob />}
+            />
+            <Route
+              path="/register"
+              render={() => <RegisterForm handleRegister={this.handleRegister} />}
+            />
+            <Route
+              path="/"
+              render={() => <Home />}
+            />
+          </Switch>
+        </main>
         <Footer />
       </div>
     );
   }
 }
-
 export default App;
+
+
