@@ -11,7 +11,8 @@ export default class CreateJob extends Component {
       jobDescription: "",
       jobRequirements: "",
       location: "",
-      salary: ""
+      salary: "",
+      recruiterId: ""
     };
   }
   handleChange = e => {
@@ -21,37 +22,51 @@ export default class CreateJob extends Component {
     });
   };
 
+// #######################################
+//THIS IS THE NEW SUBMITJOB POST BY RICO
+// #######################################
+
   submitJob = async e => {
     e.preventDefault();
     try {
       axios.post(
-        `http://localhost:3001/jobs`,
+        `http://localhost:3001/jobs/${this.state.recruiterId}`,
         {
-          jobTitle: this.state.jobTitle,
-          jobId: this.state.jobId,
-          jobDescription: this.state.jobDescription,
-          jobRequirements: this.state.jobRequirements,
-          location: this.state.location,
-          salary: this.state.salary,
-          recruiterId: this.state.currentUser.id
-        },
-        {
-          headers: {
-            authorization: "Bearer " + localStorage.getItem("token"),
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          }
+            jobTitle: this.state.jobTitle,
+            jobId: this.state.jobId,
+            jobDescription: this.state.jobDescription,
+            jobRequirements: this.state.jobRequirements,
+            location: this.state.location,
+            salary: this.state.salary
         }
+
+        // ,
+        // {
+        //   headers: {
+        //     authorization: "Bearer " + localStorage.getItem("token"),
+        //     Accept: "application/json",
+        //     "Content-Type": "application/json"
+        //   }
+        // }
       );
     } catch (e) {
       console.error(e);
     }
   };
 
+  componentDidMount = (e) => {
+    this.setState({
+      recruiterId: this.props.currentUser.id
+    })
+  }
+
   render() {
+    console.log(this.props.currentUser.id);
     console.log(this.props.currentUser);
     return (
-      <form onSubmit={this.submitJob} className="jobCreateForm">
+      <div>
+        <h1>Create Job</h1>
+      <form onSubmit={e => this.submitJob(e)} className="jobCreateForm">
         <input
           type="textarea"
           name="jobTitle"
@@ -104,7 +119,8 @@ export default class CreateJob extends Component {
           type="submit"
           id="jobSubmit"
         />
-      </form>
+        </form>
+        </div>
     );
   }
 }
