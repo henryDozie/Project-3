@@ -84,10 +84,7 @@ class App extends Component {
         {this.state.errorText && (
           <h2 className="error">{this.state.errorText}</h2>
         )}
-        {/* <Route
-          path="/login"
-          render={() => <LoginForm handleLogin={this.handleLogin} />}
-        /> */}
+        
         <Route
           path="/register"
           render={() => <RegisterForm handleRegister={this.handleRegister} />}
