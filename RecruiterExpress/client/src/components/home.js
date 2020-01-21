@@ -10,7 +10,7 @@ class Home extends Component {
   render() {
     return (
       <div className="homepage">
-        <form>
+        <form class="Form">
           <input
             type='text'
             name='username'
