@@ -7,7 +7,7 @@ const Header = (props) => {
         <img className="headerStyle" src="https://i.imgur.com/8o0vbRm.jpg"></img>
         <nav>
             <Link to="/">Home/ </Link>
-            <Link to="/Jobs">Jobs/ </Link>
+            <Link to="/jobs">Jobs/ </Link>
             {/* <button onClick={props.handleLogout}>Logout</button> */}
         </nav>
         </div>

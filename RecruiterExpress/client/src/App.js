@@ -90,6 +90,10 @@ class App extends Component {
         )}
         <main>
           <Switch>
+                 <Route
+              path="/jobs"
+              render={() => <Jobs />}
+            />
             <Route path="/about" render={() => <About/>}
             />
             <Route
@@ -104,12 +108,14 @@ class App extends Component {
               path="/"
               render={() => <Home />}
             />
-            <Route
+            {/* <Route
               path="/jobs"
               render={() => <Jobs />}
-            />
+            /> */}
+  
           </Switch>
         </main>
+        {/* <Jobs/> */}
         <Footer />
       </div>
     );
