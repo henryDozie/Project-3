@@ -1,7 +1,7 @@
 // inside models.js
 const { Sequelize } = require("sequelize");
 
-let Sequelize;
+let sequelize;
 
 if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -13,7 +13,7 @@ if (process.env.DATABASE_URL) {
 } else {
 
   // Create a variable that is a connection to the database.
-  const sequelize = new Sequelize({
+  sequelize = new Sequelize({
     database: "wingRecruiter_db",
     dialect: "postgres",
     define: {
