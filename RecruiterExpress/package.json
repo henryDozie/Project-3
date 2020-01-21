@@ -23,8 +23,5 @@
     "sequelize": "^5.21.3"
   },
   "devDependencies": {},
-  "description": "",
-  "production": {
-    "use_env_variable": "DATABASE_URL"
-  }
+  "description": ""
 }
