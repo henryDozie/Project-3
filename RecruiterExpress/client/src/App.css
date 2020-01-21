@@ -36,7 +36,7 @@ body{
 
 
 #button{
-  height: 50px;
+  height: 30px;
   width: 80px;
   background-color: rgb(55, 214, 116);
   color: white;
@@ -55,18 +55,47 @@ body{
   margin-right: auto;
 }
 .jobTitle{
-  height: 50px;
+  height: 30px;
   width: 250px;
 }
 
 .location{
-  height: 50px;
+  height: 30px;
   width: 100px;
 }
 
 .search{
   margin-left: auto;
   margin-right: auto;
+}
+
+.jobOption{
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width: 80%;
+  overflow: scroll;
+}
+
+.job{
+  width: 250px;
+  padding-right: 100px;
+  padding-left: 40px;
+}
+
+.box{
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-color: lightgray;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+
+
+.apply{
+  height: 20px;
 }
 
 

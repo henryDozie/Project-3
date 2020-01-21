@@ -13,21 +13,20 @@ export default class Jobs extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.jobs ?
-
-          (this.props.jobs.map(job => (
-            <div>
-              {console.log('pos')}
-              <h3>{job.jobTitle}</h3>
-              <p>{job.jobDescription}</p>
-              <p>{job.location}</p>
-              <p>{job.jobRequirements}</p>
-              <h1>{job.salary}</h1>
+      <div className="jobOption">
+        {this.props.jobs.map(job => (
+          <div className="box">
+            <div className="job">
+              <h3>Position: {job.jobTitle}</h3>
+              <p>Description: {job.jobDescription}</p>
+              <p>City: {job.location}</p>
+              <p>Requirements: {job.jobRequirements}</p>
+              <p>Salary: {job.salary}</p>
+              <button className="apply">DETAILS</button>
             </div>
-          ))) :
-          (<div>{console.log('neg')}</div>)
-        }
+            <button className="apply">APPLY</button>
+          </div>
+        ))}
       </div>
     )
   }
