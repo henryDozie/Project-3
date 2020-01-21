@@ -4,7 +4,7 @@ const { Sequelize } = require("sequelize");
 // Create a variable that is a connection to the database.
 let sequelize;
 if(process.env.DATABASE_URL){
-  sequelize = new sequelize(process.env.DATABASE_URL, {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     define:{
       underscored: true
