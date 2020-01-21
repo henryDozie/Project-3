@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import Jobs from "./jobs";
 export default class CreateJob extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +11,11 @@ export default class CreateJob extends Component {
       jobDescription: "",
       jobRequirements: "",
       location: "",
-      salary: ""
+      salary: "",
+      jobs: []
     };
   }
+
   handleChange = e => {
     let { name, value } = e.target;
     this.setState({
@@ -42,6 +44,10 @@ export default class CreateJob extends Component {
           }
         }
       );
+      const response = await axios.get(`http://localhost:3001/jobs/user/${this.state.jobId}`);
+      this.setState({
+        jobs: response.data
+      })
     } catch (e) {
       console.error(e);
     }
@@ -91,6 +97,9 @@ export default class CreateJob extends Component {
           placeholder="Salary"
         />
         <input type="submit" />
+            
+        <Jobs
+          jobs={this.state.jobs} />
       </form>
     );
   }

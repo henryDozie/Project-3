@@ -51,25 +51,23 @@ class Home extends Component {
     return (
 
       <div className="homepage">
+        <form className="search" onSubmit={this.submitJob}>
+          <select className="jobTitle" onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
+            <option disabled>Job Title</option>
+            {this.props.jobTitle.map(job => (
+              <><option>{job}</option></>))}
+          </select>
 
-        {this.state.isClicked ?
-          <Jobs
-            jobs={this.state.jobs} /> :
+          <select className="location" onChange={this.handleChange} name="location" type="text" placeholder="location" defaultValue="City">
+            <option disabled>City</option>
+            {this.props.location.map(city => (
+              <><option>{city}</option></>))}
+          </select>
+          <button id="button">SUBMIT</button>
+        </form>
 
-          <form onSubmit={this.submitJob}>
-            <select onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
-              <option disabled>Job Title</option>
-              {this.props.jobTitle.map(job => (
-                <><option>{job}</option></>))}
-            </select>
-
-            <select onChange={this.handleChange} name="location" type="text" placeholder="location" defaultValue="City">
-              <option disabled>City</option>
-              {this.props.location.map(city => (
-                <><option>{city}</option></>))}
-            </select>
-            <input type="submit" />
-          </form>}
+        <Jobs
+          jobs={this.state.jobs} />
       </div >
 
     )

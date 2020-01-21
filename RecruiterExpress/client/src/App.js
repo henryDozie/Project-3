@@ -74,22 +74,23 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <nav>
+        <nav className="main">
           {this.state.currentUser ? (
             <div>
               <p>Hello, {this.state.currentUser.username}</p>
-              <Profile
+              <CreateJob
                 jobTitle={this.state.jobTitle}
                 location={this.state.location}
+                currentUser={this.state.currentUser}
               />
               <button onClick={this.handleLogout}>Logout</button>
             </div>
-          ) : (<div>HELLO</div>)}
+          ) : (<></>)}
+          <Route path="/login" render={() => <LoginForm handleLogin={this.handleLogin} />} />
+          <Route path="/register" render={() => <RegisterForm handleRegister={this.handleRegister} />} />
+          <Route path="/home" render={() => <Home jobTitle={this.state.jobTitle} location={this.state.location} />} />
         </nav>
         {this.state.errorText && (<p className="error">{this.state.errorText}</p>)}
-        <Route path="/login" render={() => <LoginForm handleLogin={this.handleLogin} />} />
-        <Route path="/register" render={() => <RegisterForm handleRegister={this.handleRegister} />} />
-        <Route path="/home" render={() => <Home jobTitle={this.state.jobTitle} location={this.state.location} />} />
         <Footer />
       </div>
     );
