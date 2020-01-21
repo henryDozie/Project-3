@@ -43,7 +43,7 @@ class RegisterForm extends Component {
           onChange={this.handleChange}
           required
         />
-        <input className="submit" type="submit" value="Create Account" />
+        <input class="submit" type="submit" value="Create Account" />
       </form>
     );
   }
