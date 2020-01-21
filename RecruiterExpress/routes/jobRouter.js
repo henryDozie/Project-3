@@ -30,28 +30,35 @@ jobRouter.get("/:id", async (req, res) => {
   }
 });
 
-// jobRouter.post("/", async (req, res) => {
+// #######################################
+//THIS IS THE NEW JOB ROUTER POST 
+// #######################################
+
+jobRouter.post("/:id", async (req, res) => {
+  try {
+    const recruiter = req.params.id;
+    const jobs = await Jobs.create({
+      ...req.body,
+      userId: recruiter
+    })
+    res.json({ jobs });
+  } catch (e) {
+    res.json({ error: e.message });
+  }
+});
+
+//update
+// jobRouter.put("/:id", async (req, res) => {
 //   try {
+//     const id = req.params.id;
 //     const data = req.body;
-//     const job = await Jobs.create(data);
+//     const job = await Jobs.findByPk(id);
+//     await quote.update(data);
 //     res.json({ job });
 //   } catch (e) {
 //     res.json({ error: e.message });
 //   }
 // });
-
-//update
-jobRouter.put("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const data = req.body;
-    const job = await Jobs.findByPk(id);
-    await quote.update(data);
-    res.json({ job });
-  } catch (e) {
-    res.json({ error: e.message });
-  }
-});
 
 //delete
 jobRouter.delete("/:id", async (req, res) => {
@@ -76,16 +83,23 @@ jobRouter
     } catch (e) {
       next(e);
     }
-  })
-  .post(async (req, res, next) => {
-    try {
-      debugger;
-      const jobs = await Jobs.create(req.body);
-      res.json(jobs);
-    } catch (e) {
-      next(e);
-    }
   });
+  // .post(async (req, res, next) => {
+  //   try {
+  //     debugger;
+  //     // const job = req.body.job;
+  //     const rec = req.body.recruiter;
+  //     console.log(rec);
+  //     const jobs = await Jobs.create({
+  //       ...req.body.job,
+  //       userId: rec.recruiter,
+  //       recruiterId: rec.recruiter
+  //     });
+  //     res.json(jobs);
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // });
 
 // jobRouter
 //   .route("/:id")
