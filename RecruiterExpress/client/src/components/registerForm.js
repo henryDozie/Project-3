@@ -1,23 +1,36 @@
-import React, { Component } from "react";
+import React, { Component  } from "react";
+import { registerUser } from "../services/api_helper";
 
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+        username: "",
+        password: ""
     };
   }
 
   handleChange = e => {
     const { name, value } = e.target;
+    console.log(name);
+    console.log(value);
     this.setState({
       [name]: value
     });
   };
 
+  handleRegister = async (e) => {
+    e.preventDefault();
+    const res = await registerUser({
+      username: this.state.username,
+      password: this.state.password
+    });
+    console.log(res);
+  }
+
   render() {
-    console.log(this.props);
+    console.log(this.state.username);
+    console.log(this.state.password);
 
     return (
       <div>
@@ -25,17 +38,14 @@ class RegisterForm extends Component {
         <form
           className="register"
           onSubmit={e =>
-            this.props.handleRegister(e, {
-              username: this.state.username,
-              password: this.state.password
-            })
+            this.handleRegister(e)
           }
         >
           <label htmlFor="username">Username</label>
           <input
             type="text"
             name="username"
-            value={this.state.username}
+            // value={this.state.username}
             onChange={this.handleChange}
             required
           />
@@ -43,7 +53,7 @@ class RegisterForm extends Component {
           <input
             type="password"
             name="password"
-            value={this.state.password}
+            // value={this.state.password}
             onChange={this.handleChange}
             required
           />
