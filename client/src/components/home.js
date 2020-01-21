@@ -10,8 +10,16 @@ class Home extends Component {
       flag: false,
       searchedJobs: [],
       apiLoaded: false,
-      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture', 'DJ'],
-      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando', 'LA', 'Texas'],
+      jobTitle: ["Software Engineer", "Computer Science", "Architecture", "DJ"],
+      location: [
+        "New York",
+        "New Jersey",
+        "Conneticut",
+        "Virginia",
+        "Orlando",
+        "LA",
+        "Texas"
+      ],
       formData: {
         jobTitle: null,
         location: null
@@ -38,45 +46,67 @@ class Home extends Component {
     e.preventDefault();
     const formData = this.state.formData;
     try {
-      console.log(formData.location)
-      const response = await axios.get(`http://localhost:3001/jobs/job-titles/${formData.jobTitle}/${formData.location}`);
+      console.log(formData.location);
+      const response = await axios.get(
+        `http://localhost:3001/jobs/job-titles/${formData.jobTitle}/${formData.location}`
+      );
       this.setState({
         jobs: response.data,
         isClicked: true
-      })
+      });
       console.log(this.state.jobs);
     } catch (e) {
       console.error(e);
     }
-  }
-  handleChange = (event) => {
-    let value = event.target.value
-    let name = event.target.name
+  };
+  handleChange = event => {
+    let value = event.target.value;
+    let name = event.target.name;
     this.setState(prevState => ({
       formData: {
         ...prevState.formData,
         [name]: value
       }
-    }))
-  }
+    }));
+  };
 
   render() {
     return (
       <div className="homepage">
         <div className="homePageFormDiv">
-        <form className="homepageForm" onSubmit={this.submitJob}>
-          <select className="jobTitle" onChange={this.handleChange} name="jobTitle" type="text" placeholder="Job Title" defaultValue="Job Title">
-            <option disabled>Job Title</option>
-            {this.state.jobTitle.map(job => (
-              <><option>{job}</option></>))}
-          </select>
-          <select className="location" onChange={this.handleChange} name="location" type="text" placeholder="location" defaultValue="City">
-            <option disabled>City</option>
-            {this.state.location.map(city => (
-              <><option>{city}</option></>))}
-          </select>
-          <input type="submit" id="searchButton"/>
-        </form>
+          <form className="homepageForm" onSubmit={this.submitJob}>
+            <select
+              className="jobTitle"
+              onChange={this.handleChange}
+              name="jobTitle"
+              type="text"
+              placeholder="Job Title"
+              defaultValue="Job Title"
+            >
+              <option disabled>Job Title</option>
+              {this.state.jobTitle.map(job => (
+                <>
+                  <option>{job}</option>
+                </>
+              ))}
+            </select>
+            <select
+              className="location"
+              onChange={this.handleChange}
+              name="location"
+              type="text"
+              placeholder="location"
+              defaultValue="City"
+            >
+              <option disabled>City</option>
+              {this.state.location.map(city => (
+                <>
+                  <option>{city}</option>
+                </>
+              ))}
+            </select>
+            <input type="submit" id="searchButton" />
+          </form>
         </div>
 
         <div className="top3Jobs">
@@ -87,9 +117,7 @@ class Home extends Component {
               <h3>{job.salary}</h3>
             </div>
           ))}
-          <div>
-            
-          </div>
+          <div></div>
         </div>
       </div>
     );

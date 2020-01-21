@@ -10,21 +10,37 @@ export default class CreateJob extends Component {
       flag: false,
       searchedJobs: [],
       apiLoaded: false,
-      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture', 'DJ'],
-      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando', 'LA', 'Texas'],
+      jobTitle: ["Software Engineer", "Computer Science", "Architecture", "DJ"],
+      location: [
+        "New York",
+        "New Jersey",
+        "Conneticut",
+        "Virginia",
+        "Orlando",
+        "LA",
+        "Texas"
+      ],
       formData: {
         jobTitle: null,
-        location: null
+        location: null,
+        jobDescription: null,
+        jobRequirement: null,
+        salary: null,
+        jobId: null
       },
       isClicked: false,
       recruiterId: null
     };
   }
-  handleChange = e => {
-    let { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
+  handleChange = event => {
+    let value = event.target.value;
+    let name = event.target.name;
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value
+      }
+    }));
   };
 
   // #######################################
@@ -34,18 +50,16 @@ export default class CreateJob extends Component {
   submitJob = async e => {
     e.preventDefault();
     try {
-      axios.post(
-        `http://localhost:3001/jobs/${this.state.recruiterId}`,
-        {
-          jobTitle: this.state.jobTitle,
-          jobId: this.state.jobId,
-          jobDescription: this.state.jobDescription,
-          jobRequirements: this.state.jobRequirements,
-          location: this.state.location,
-          salary: this.state.salary
-        }
-
-      );
+      axios.post(`http://localhost:3001/jobs/${this.state.recruiterId}`, {
+        //   jobTitle: this.state.jobTitle,
+        //   jobId: this.state.jobId,
+        //   jobDescription: this.state.jobDescription,
+        //   jobRequirements: this.state.jobRequirements,
+        //   location: this.state.location,
+        //   salary: this.state.salary
+        // });
+        formdata
+      }
     } catch (e) {
       console.error(e);
     }
@@ -58,7 +72,6 @@ export default class CreateJob extends Component {
   };
 
   render() {
-    
     return (
       <div>
         <h1>Create Job</h1>
@@ -74,7 +87,7 @@ export default class CreateJob extends Component {
             <option disabled>Job Title</option>
             {this.state.jobTitle.map(job => (
               <>
-                <option>{job}</option>
+                <option value={job}>{job}</option>
               </>
             ))}
           </select>
@@ -107,7 +120,7 @@ export default class CreateJob extends Component {
           />
           <select
             className="location"
-            onChange={this.handleChange}
+            // onChange={this.handleChange}
             name="location"
             type="text"
             placeholder="location"
