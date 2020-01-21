@@ -8,9 +8,9 @@ class Details extends Component {
   render() {
     return (
       <div>
-        <p>{this.props.details}</p>
-        <p>{this.props.requirement}</p>
-        <span>{this.props.salary}</span>
+        <p>Details: {this.props.details}</p>
+        <p>Requirement:{this.props.requirement}</p>
+        <span>Salary: {this.props.salary}</span>
       </div>
     )
   }
