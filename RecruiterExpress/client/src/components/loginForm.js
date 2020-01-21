@@ -22,7 +22,7 @@ class LoginForm extends Component {
         return (
             <div>
             <form
-                className="login"
+                class="login"
                 onSubmit={e =>
                     this.props.handleLogin(e, {
                         username: this.state.username,
@@ -47,11 +47,12 @@ class LoginForm extends Component {
                     onChange={this.onChange}
                     required
                 />
-                <input className="submit" type="submit" value="Login" />
+                <input class="submit" type="submit" value="Login" />
                 {/* <Link to="/register">Register</Link> */}
             </form>
              <Link to="/register">Register</Link> 
-                </div>
+             <Link to="/createJob">Create Job</Link>
+            </div>
         );
     }
 }
