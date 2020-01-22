@@ -2,10 +2,14 @@ import React from "react";
 const About = () => {
   return (
     <div>
+      <div className="AboutPosition">
       <div className="AboutClass">
         <p class="ImgP">
           We Actively Connect People to Their Next Great Opportunity
         </p>
+        <p>WingRecruiter is a leading online employment marketplace that leverages Artificial Intelligence (AI)-powered smart
+          matching technology to actively connect millions of employers and job seekers.We have over 1000 employees in the U.S
+          and Canada Our headquarters is located in New York, NY</p>
         <img class="AboutImg" src="https://i.imgur.com/Qqjq0SQ.jpg"></img>
       </div>
       <p class="note">Featured in</p>
@@ -30,6 +34,7 @@ const About = () => {
           class="listImg"
           src="https://www.cbc.ca/mediacentre/content/images/Gem_CBC_wordmark_Thumb.jpg"
         ></img>
+      </div>
       </div>
     </div>
   );

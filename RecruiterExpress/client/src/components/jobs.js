@@ -24,7 +24,7 @@ export default class Jobs extends Component {
 
   render() {
     return (
-      
+      <div className="JobDiv">
         <div className="jobCardDiv">
           {this.state.jobs.map(job => (
             <div className="jobCard">
@@ -37,7 +37,7 @@ export default class Jobs extends Component {
             </div>
           ))}
         </div>
-      
+      </div>
     );
   }
 }

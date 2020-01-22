@@ -53,9 +53,9 @@ class Header extends Component {
           )}       
           {this.props.currentUser ? (
             <div>
-             <p className="welcome">Hello , 
+             <p className="welcome">Hello .     
                 {this.props.currentUser.username}</p>
-               <li className="right"><Link to="/recruiters">Recruiters</Link></li>
+               {/* <li className="right"><Link to="/recruiters">Recruiters</Link></li> */}
                <li className="right"><Link to="/createJob">Post Jobs</Link></li>
                <li className="right"><button onClick={this.props.handleLogout}>Logout</button></li>
             </div>

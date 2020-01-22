@@ -84,6 +84,7 @@ class Home extends Component {
 
   render() {
     return (
+      <div className="homeImg">
       <div className="homepage">
         <div className="homePageFormDiv">
           <form className="homepageForm" onSubmit={this.submitJob}>
@@ -133,6 +134,8 @@ class Home extends Component {
           <div></div>
         </div>
       </div>
+      </div>
+      
     );
   }
 }
