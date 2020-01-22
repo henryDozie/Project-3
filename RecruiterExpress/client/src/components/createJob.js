@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class Home extends Component {
+export default class CreateJob extends Component {
   constructor(props) {
     super(props);
 
@@ -22,43 +22,16 @@ class Home extends Component {
       ],
       formData: {
         jobTitle: null,
-        location: null
+        location: null,
+        jobDescription: null,
+        jobRequirement: null,
+        salary: null,
+        jobId: null
       },
-      isClicked: false
+      isClicked: false,
+      recruiterId: null
     };
   }
-
-  componentDidMount = async e => {
-    const response = await axios.get("http://localhost:3001/jobs");
-    let jobList = response.data;
-    let latestJobs = [];
-    console.log(jobList);
-    for (let i = 0; i < 3; i++) {
-      latestJobs.push(jobList[i]);
-    }
-    this.setState({
-      jobs: latestJobs,
-      apiLoaded: true
-    });
-  };
-
-  submitJob = async e => {
-    e.preventDefault();
-    const formData = this.state.formData;
-    try {
-      console.log(formData.location);
-      const response = await axios.get(
-        `http://localhost:3001/jobs/job-titles/${formData.jobTitle}/${formData.location}`
-      );
-      this.setState({
-        jobs: response.data,
-        isClicked: true
-      });
-      console.log(this.state.jobs);
-    } catch (e) {
-      console.error(e);
-    }
-  };
   handleChange = event => {
     let value = event.target.value;
     let name = event.target.name;
@@ -70,58 +43,106 @@ class Home extends Component {
     }));
   };
 
+  // #######################################
+  //THIS IS THE NEW SUBMITJOB POST BY RICO
+  // #######################################
+
+  submitJob = async e => {
+    e.preventDefault();
+    try {
+      axios.post(`http://localhost:3001/jobs/${this.state.recruiterId}`, {
+        jobTitle: this.state.formData.jobTitle,
+        jobId: this.state.formData.jobId,
+        jobDescription: this.state.formData.jobDescription,
+        jobRequirements: this.state.formData.jobRequirements,
+        location: this.state.formData.location,
+        salary: this.state.formData.salary
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  componentDidMount = e => {
+    this.setState({
+      recruiterId: this.props.currentUser.id
+    });
+  };
+
   render() {
     return (
-      <div className="homepage">
-        <div className="homePageFormDiv">
-          <form className="homepageForm" onSubmit={this.submitJob}>
-            <select
-              className="jobTitle"
-              onChange={this.handleChange}
-              name="jobTitle"
-              type="text"
-              placeholder="Job Title"
-              defaultValue="Job Title"
-            >
-              <option disabled>Job Title</option>
-              {this.state.jobTitle.map(job => (
-                <>
-                  <option>{job}</option>
-                </>
-              ))}
-            </select>
-            <select
-              className="location"
-              onChange={this.handleChange}
-              name="location"
-              type="text"
-              placeholder="location"
-              defaultValue="City"
-            >
-              <option disabled>City</option>
-              {this.state.location.map(city => (
-                <>
-                  <option>{city}</option>
-                </>
-              ))}
-            </select>
-            <input type="submit" id="searchButton" />
-          </form>
-        </div>
-
-        <div className="top3Jobs">
-          {this.state.jobs.map(job => (
-            <div className="home3Jobs">
-              <h1>{job.jobTitle}</h1>
-              <h3>{job.jobId}</h3>
-              <h3>{job.salary}</h3>
-            </div>
-          ))}
-          <div></div>
-        </div>
+      <div>
+        <h1>Create Job</h1>
+        <form onSubmit={e => this.submitJob(e)} className="jobCreateForm">
+          <select
+            className="jobTitle"
+            onChange={this.handleChange}
+            name="jobTitle"
+            type="text"
+            placeholder="Job Title"
+            defaultValue="Job Title"
+          >
+            <option disabled>Job Title</option>
+            {this.state.jobTitle.map(job => (
+              <>
+                <option value={job}>{job}</option>
+              </>
+            ))}
+          </select>
+          <input
+            type="textarea"
+            name="jobId"
+            value={this.state.text}
+            onChange={this.handleChange}
+            placeholder="Job ID"
+            id="jobId"
+            required
+          />
+          <input
+            type="textarea"
+            name="jobDescription"
+            value={this.state.text}
+            onChange={this.handleChange}
+            placeholder="Job Description"
+            id="jobDescription"
+            required
+          />
+          <input
+            type="textarea"
+            name="jobRequirements"
+            value={this.state.text}
+            onChange={this.handleChange}
+            placeholder="Job Requirements"
+            id="jobRequirement"
+            required
+          />
+          <select
+            className="location"
+            // onChange={this.handleChange}
+            name="location"
+            type="text"
+            placeholder="location"
+            defaultValue="City"
+          >
+            <option disabled>City</option>
+            {this.state.location.map(city => (
+              <>
+                <option>{city}</option>
+              </>
+            ))}
+          </select>
+          <input
+            type="textarea"
+            name="salary"
+            value={this.state.text}
+            onChange={this.handleChange}
+            placeholder="Salary"
+            id="jobSalary"
+            required
+          />
+          <input type="submit" id="jobSubmit" />
+        </form>
       </div>
     );
   }
 }
-
-export default Home;

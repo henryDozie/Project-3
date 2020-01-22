@@ -174,7 +174,7 @@ nav > a {
 
 .jobCardDiv{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 2fr);
 
   column-gap: 1vw;
   /* height: 90vh; */

@@ -31,19 +31,19 @@ class Home extends Component {
     };
   }
 
-  componentDidMount = async e => {
-    const response = await axios.get("http://localhost:3001/jobs");
-    let jobList = response.data;
-    let latestJobs = [];
-    console.log(jobList);
-    for (let i = 0; i < 3; i++) {
-      latestJobs.push(jobList[i]);
-    }
-    this.setState({
-      jobs: latestJobs,
-      apiLoaded: true
-    });
-  };
+  // componentDidMount = async e => {
+  //   const response = await axios.get("http://localhost:3001/jobs");
+  //   let jobList = response.data;
+  //   let latestJobs = [];
+  //   console.log(jobList);
+  //   for (let i = 0; i < 3; i++) {
+  //     latestJobs.push(jobList[i]);
+  //   }
+  //   this.setState({
+  //     jobs: latestJobs,
+  //     apiLoaded: true
+  //   });
+  // };
 
   submitJob = async e => {
     e.preventDefault();
@@ -152,8 +152,7 @@ class Home extends Component {
                 onClick={() => {
 
                   this.setState({ detailsToShow: index }, () => console.log(job))
-                }}
-              >view
+                }}>view
               </button>
 
             </div>
