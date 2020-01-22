@@ -52,12 +52,31 @@ nav > a {
 }
 
 
+
+
 .companyDetails{
   display: flex;
   flex-direction: column;
   align-content: flex-start;
   width: 70vw;
   padding: 0 auto;
+}
+
+.close, .viewButton{
+  background-color: red;
+  color: white;
+  width: 40vw;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p{  
+  text-decoration: underline;
+}
+
+.viewButton{
+  background-color: blue;
 }
 
 
@@ -99,10 +118,6 @@ nav > a {
   background-color: lightgreen;
 }
 
-.viewButton{
-  display: flex;
-}
-
 
 .top3Jobs {
   display: flex;
@@ -110,7 +125,6 @@ nav > a {
   width: 80vw;
   height: 65vh;
   flex-direction: column;
-  border: 1px solid gray;
   margin-right: auto;
   margin-left: auto;
   padding: 5px 5px;
@@ -165,7 +179,7 @@ nav > a {
   box-shadow: 3px 3px 3px 3px black;
   font-family: "Lucida Console", Monaco, monospace;
   padding: 10px;
-  background-color: white;
+  background-color: rgb(147,130,0);
 }
 
 .jobCard:hover{
@@ -175,11 +189,22 @@ nav > a {
 .jobCardDiv{
   display: grid;
   grid-template-columns: repeat(1, 2fr);
-
+  background-color: black;
   column-gap: 1vw;
   /* height: 90vh; */
   margin: 10vh 5vw 0 5vw;
+  overflow: scroll;
+  height: 80vh;
   /* border: 4px solid red; */
+}
+
+.recruiter{
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgb(147,130,0);
+  width: 100%;
+  text-align: center;
 }
 
 

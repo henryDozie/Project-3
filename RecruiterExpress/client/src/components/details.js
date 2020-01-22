@@ -14,10 +14,11 @@ class Details extends Component {
       <React.Fragment>
         {this.props.currentIndex === this.props.indexToShow &&
           <div className="companyDetails">
-            <p><h4>Details:</h4> {this.props.details}</p>
-            <p><h4>Requirement:</h4>{this.props.requirement}</p>
-            <span><h4>Salary:</h4>{this.props.salary}</span>
-            <button onClick={this.props.close}>close</button>
+            <h4>Details:</h4> <p>{this.props.details}</p>
+            <h4>Requirement:</h4><p>{this.props.requirement}</p>
+            <h4>Salary:</h4><p>
+              {this.props.salary}</p>
+            <button className="close" onClick={this.props.close}>close</button>
           </div>
         }
       </React.Fragment>

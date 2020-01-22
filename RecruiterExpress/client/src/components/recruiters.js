@@ -29,6 +29,7 @@ export default class Recruiters extends Component {
   render() {
     return (
       <div className="jobCardDiv">
+        <span className="recruiter"><h1></h1>RECRUITERS</span>
         {this.state.recruiters.map(recruiters => (
           <div className="jobCard">
             <h3>{recruiters.name}</h3>
