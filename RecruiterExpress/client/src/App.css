@@ -52,6 +52,15 @@ nav > a {
 }
 
 
+.companyDetails{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 70vw;
+  padding: 0 auto;
+}
+
+
 .homepageForm {
   display: flex;
   flex-direction: row;
@@ -90,13 +99,18 @@ nav > a {
   background-color: lightgreen;
 }
 
+.viewButton{
+  display: flex;
+}
+
+
 .top3Jobs {
   display: flex;
   flex-direction: column;
   width: 80vw;
-  height: 70vh;
+  height: 65vh;
   flex-direction: column;
-  border: 2px solid gray;
+  border: 1px solid gray;
   margin-right: auto;
   margin-left: auto;
   padding: 5px 5px;
@@ -109,7 +123,7 @@ nav > a {
 .home3Jobs{
   display: flex;
   flex-direction: column;
-  border-style: solid;
+  border: 1px solid gray;
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;

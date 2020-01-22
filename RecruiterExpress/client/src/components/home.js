@@ -26,7 +26,8 @@ class Home extends Component {
         location: null
       },
       isClicked: false,
-      isViewed: false
+      isViewed: false,
+      detailsToShow: ""
     };
   }
 
@@ -68,13 +69,25 @@ class Home extends Component {
       formData: {
         ...prevState.formData,
         [name]: value
-      }
+      },
+
     }));
   };
 
-  onClick = e => {
+  onClick = (e) => {
+    // <Details
+    //   jobDescription={job.jobDescription}
+    //   jobRequirements={job.jobRequirements}
+    //   salary={job.salary} />
     this.setState({
       isViewed: true
+    })
+
+  }
+
+  close = e => {
+    this.setState({
+      isViewed: false
     })
   }
 
@@ -118,17 +131,31 @@ class Home extends Component {
         </div>
 
         <div className="top3Jobs">
-          {this.state.jobs.map(job => (
+          {this.state.jobs.map((job, index) => (
             <div className="home3Jobs">
-              <h3>{job.jobTitle}</h3>
+              <h3 key={index}>{job.jobTitle}</h3>
               <p>{job.location}</p>
-              <button onClick={this.onClick}>view</button>
               {this.state.isViewed &&
-                <Details
-                  jobDescription={job.jobDescription}
-                  jobRequirements={job.jobRequirements}
-                  salary={job.salary} />
+                <>
+                  <button onClick={(e) => this.close}>close</button>
+                </>
               }
+              <Details
+                currentIndex={index}
+                indexToShow={this.state.detailsToShow}
+                close={() => this.setState({ detailsToShow: -1 })}
+                salary={job.salary}
+                requirement={job.jobRequirements}
+                details={job.jobDescription}
+              />
+              <button className="viewButton"
+                onClick={() => {
+
+                  this.setState({ detailsToShow: index }, () => console.log(job))
+                }}
+              >view
+              </button>
+
             </div>
           ))}
           <div></div>
