@@ -61,7 +61,7 @@ class RegisterForm extends Component {
             placeholder="password"
             className="userPass"
           />
-          <input className="submit" type="submit" value="Create Account" />
+          <input className="submit" type="submit" value="SignUp" />
           <button onClick={e => this.props.handleBack(e)}>Login</button>
         </form>
       </div>
