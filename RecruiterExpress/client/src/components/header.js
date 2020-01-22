@@ -32,11 +32,23 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <div className="logo"><h1>Logo</h1></div>
+        <div className="logo"><a href="/home"><img src="https://imgur.com/YruU2Hg.png" className="logo"></img></a></div>
         <nav>
           <Link to="/home">Home</Link>
           <Link to="/jobs">Jobs</Link>
+          <Link to="/about">About</Link>
+
           {/* <Link to="/login">Login / Register</Link> */}
+
+          {this.props.currentUser ? (
+            <div>
+              <Link to="/recruiters">Recruiters</Link>
+              <Link to="/createJob">Post Jobs</Link>
+              <button onClick={this.props.handleLogout}>Logout</button>
+            </div>
+          ) : (
+            <div></div>
+            )}
           {!this.state.register ? (
             <LoginForm
             handleRegister={this.handleRegister}
@@ -49,16 +61,6 @@ class Header extends Component {
               />
           )}
 
-          {this.props.currentUser ? (
-            <div>
-              <Link to="/recruiters">Recruiters</Link>
-              <Link to="/createJob">Post Jobs</Link>
-              <button onClick={this.props.handleLogout}>Logout</button>
-            </div>
-          ) : (
-            <div></div>
-            )}
-          <Link to="/about">About</Link>
         </nav>
       </div>
     );

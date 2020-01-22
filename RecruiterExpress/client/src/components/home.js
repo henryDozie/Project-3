@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import Details from "./details";
 class Home extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       jobs: [],
       flag: false,
@@ -24,10 +23,11 @@ class Home extends Component {
         jobTitle: null,
         location: null
       },
-      isClicked: false
+      isClicked: false,
+      isViewed: false,
+      detailsToShow: ""
     };
   }
-
   componentDidMount = async e => {
     const response = await axios.get("http://localhost:3001/jobs");
     let jobList = response.data;
@@ -41,7 +41,6 @@ class Home extends Component {
       apiLoaded: true
     });
   };
-
   submitJob = async e => {
     e.preventDefault();
     const formData = this.state.formData;
@@ -66,10 +65,23 @@ class Home extends Component {
       formData: {
         ...prevState.formData,
         [name]: value
-      }
+      },
     }));
   };
-
+  onClick = (e) => {
+    // <Details
+    //   jobDescription={job.jobDescription}
+    //   jobRequirements={job.jobRequirements}
+    //   salary={job.salary} />
+    this.setState({
+      isViewed: true
+    })
+  }
+  close = e => {
+    this.setState({
+      isViewed: false
+    })
+  }
   render() {
     return (
       <div className="homepage">
@@ -108,13 +120,29 @@ class Home extends Component {
             <input type="submit" id="searchButton" />
           </form>
         </div>
-
         <div className="top3Jobs">
-          {this.state.jobs.map(job => (
+          {this.state.jobs.map((job, index) => (
             <div className="home3Jobs">
-              <h1>{job.jobTitle}</h1>
-              <h3>{job.jobId}</h3>
-              <h3>{job.salary}</h3>
+              <h3 key={index}>{job.jobTitle}</h3>
+              <span>{job.location}</span>
+              {this.state.isViewed &&
+                <>
+                  <button onClick={(e) => this.close}>close</button>
+                </>
+              }
+              <Details
+                currentIndex={index}
+                indexToShow={this.state.detailsToShow}
+                close={() => this.setState({ detailsToShow: -1 })}
+                salary={job.salary}
+                requirement={job.jobRequirements}
+                details={job.jobDescription}
+              />
+              <button className="viewButton"
+                onClick={() => {
+                  this.setState({ detailsToShow: index }, () => console.log(job))
+                }}>view
+              </button>
             </div>
           ))}
           <div></div>
@@ -123,5 +151,4 @@ class Home extends Component {
     );
   }
 }
-
 export default Home;

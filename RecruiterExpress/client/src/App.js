@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import { loginUser, registerUser, verifyUser } from "./services/api_helper";
-import LoginForm from "./components/loginForm";
+// import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import CreateJob from "./components/createJob";
 import Jobs from "./components/jobs";
