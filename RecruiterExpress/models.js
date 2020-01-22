@@ -21,7 +21,8 @@ if (process.env.DATABASE_URL) {
   });
 }
 
-class Jobs extends Sequelize.Model {}
+
+class Jobs extends Sequelize.Model { }
 
 Jobs.init(
   {
@@ -38,7 +39,7 @@ Jobs.init(
   }
 );
 
-class Recruiter extends Sequelize.Model {}
+class Recruiter extends Sequelize.Model { }
 
 Recruiter.init(
   {
@@ -54,7 +55,7 @@ Recruiter.init(
   }
 );
 
-class User extends Sequelize.Model {}
+class User extends Sequelize.Model { }
 
 User.init(
   {

@@ -17,7 +17,9 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
-      errorText: ""
+      errorText: "",
+      jobTitle: ['Software Engineer', 'Computer Science', 'Architecture'],
+      location: ['New York', 'New Jersey', 'Conneticut', 'Virginia', 'Orlando']
     };
   }
   handleLogin = async (e, loginData) => {
@@ -37,6 +39,7 @@ class App extends Component {
   };
   handleRegister = async (e, registerData) => {
     e.preventDefault();
+    console.log(registerData)
     if (!registerData.username || !registerData.password) {
       this.setState({
         errorText: "You must supply a username And password"
