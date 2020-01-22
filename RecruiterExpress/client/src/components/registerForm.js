@@ -41,21 +41,25 @@ class RegisterForm extends Component {
             this.handleRegister(e)
           }
         >
-          <label htmlFor="username">Username</label>
+          {/* <label htmlFor="username">Username</label> */}
           <input
             type="text"
             name="username"
             // value={this.state.username}
             onChange={this.handleChange}
             required
+            className="userPass"
+            placeholder="username"
           />
-          <label htmlFor="password">Password</label>
+          {/* <label htmlFor="password">Password</label> */}
           <input
             type="password"
             name="password"
             // value={this.state.password}
             onChange={this.handleChange}
             required
+            placeholder="password"
+            className="userPass"
           />
           <input className="submit" type="submit" value="Create Account" />
           <button onClick={e => this.props.handleBack(e)}>Login</button>
