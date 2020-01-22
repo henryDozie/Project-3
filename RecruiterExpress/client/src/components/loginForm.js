@@ -30,7 +30,7 @@ class LoginForm extends Component {
         }
       >
         
-        <label htmlFor="username">Username</label>
+        {/* <label htmlFor="username">Username</label> */}
         <input
           type="text"
           name="username"
@@ -38,7 +38,7 @@ class LoginForm extends Component {
           onChange={this.onChange}
           required
         />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label> */}
         <input
           type="password"
           name="password"
@@ -47,7 +47,7 @@ class LoginForm extends Component {
           required
         />
         <input className="submit" type="submit" value="Login" />
-        <button onClick={e => this.props.handleRegister(e)}>Register</button>
+        <button className="registerButton" onClick={e => this.props.handleRegister(e)}>Register</button>
         
         {/* <Link to="/register">Register</Link> */}
         </form>
