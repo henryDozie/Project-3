@@ -119,6 +119,7 @@ class Home extends Component {
             </select>
             <input type="submit" id="searchButton" />
           </form>
+          {/* <img className="anim" src="https://images.pexels.com/photos/2705660/pexels-photo-2705660.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=800"/> */}
         </div>
 
         <div className="top3Jobs">
