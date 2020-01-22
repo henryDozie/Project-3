@@ -41,7 +41,7 @@ class RegisterForm extends Component {
             this.handleRegister(e)
           }
         >
-          <label htmlFor="username">Username</label>
+          {/* <label htmlFor="username">Username</label> */}
           <input
             type="text"
             name="username"
@@ -49,7 +49,7 @@ class RegisterForm extends Component {
             onChange={this.handleChange}
             required
           />
-          <label htmlFor="password">Password</label>
+          {/* <label htmlFor="password">Password</label> */}
           <input
             type="password"
             name="password"
