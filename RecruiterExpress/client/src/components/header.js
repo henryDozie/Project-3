@@ -34,31 +34,36 @@ class Header extends Component {
       <div className="header">
         <div className="logo"><h1>Logo</h1></div>
         <nav>
-          <Link to="/home">Home</Link>
-          <Link to="/jobs">Jobs</Link>
+          <div>
+          <ul>
+          <li className="left"><Link to="/home">Home</Link></li>
+          <li className="left"><Link to="/jobs">Jobs</Link></li>
+          <li className="left"><Link to="/about">About</Link></li>
           {/* <Link to="/login">Login / Register</Link> */}
           {!this.state.register ? (
-            <LoginForm
+            <li className="right"><LoginForm
             handleRegister={this.handleRegister}
               handleLogin={this.props.handleLogin}
-            />
+            /></li>
           ) : (
-              <RegisterForm
+            <li className="right"><RegisterForm
                 handleBack={this.handleBack}
                 
-              />
-          )}
-
+              /></li>
+          )}       
           {this.props.currentUser ? (
             <div>
-              <Link to="/recruiters">Recruiters</Link>
-              <Link to="/createJob">Post Jobs</Link>
-              <button onClick={this.props.handleLogout}>Logout</button>
+             <p className="welcome">Hello , 
+                {this.props.currentUser.username}</p>
+               <li className="right"><Link to="/recruiters">Recruiters</Link></li>
+               <li className="right"><Link to="/createJob">Post Jobs</Link></li>
+               <li className="right"><button onClick={this.props.handleLogout}>Logout</button></li>
             </div>
           ) : (
             <div></div>
             )}
-          <Link to="/about">About</Link>
+         </ul>
+        </div>
         </nav>
       </div>
     );
