@@ -43,9 +43,6 @@ export default class CreateJob extends Component {
     }));
   };
 
-  // #######################################
-  //THIS IS THE NEW SUBMITJOB POST BY RICO
-  // #######################################
 
   submitJob = async e => {
     e.preventDefault();
@@ -118,7 +115,6 @@ export default class CreateJob extends Component {
           />
           <select
             className="location"
-            // onChange={this.handleChange}
             name="location"
             type="text"
             placeholder="location"
