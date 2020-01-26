@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:3001"
+  // baseURL: "https://hidden-fortress-18345.herokuapp.com/"
 });
 
 export const loginUser = async loginData => {
